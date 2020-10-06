@@ -12,7 +12,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(Model model){
-        model.addAttribute(new Hex(new Point(100, -100)));
+        model.addAttribute("hex" ,new Hex(new Point(200, 200)));
         return "index";
     }
 }
