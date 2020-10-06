@@ -27,11 +27,13 @@ public class Ship {
     private String direction;
     @Column(name="nationality")
     private String nationality;
+    @Column(name="nationality")
+    private String ammunation;
 
     public Ship() {
     }
 
-    public Ship(Integer id, String name, String position, Integer hullQuality, Integer amountOfGunRows, Integer amountOfSailors, Integer sailQuality, Integer speed, String direction, String nationality) {
+    public Ship(Integer id, String name, String position, Integer hullQuality, Integer amountOfGunRows, Integer amountOfSailors, Integer sailQuality, Integer speed, String direction, String nationality,String ammunation) {
         this.id = id;
         this.name = name;
         this.position = position;
@@ -42,7 +44,11 @@ public class Ship {
         this.speed = speed;
         this.direction = direction;
         this.nationality = nationality;
+        this.ammunation = ammunation;
     }
+    // Brig,"Point value", 25, 1, 60, 30, 2, ?, "Nationality"
+    // Ship of the line,"Point value", 60, 2, 160, 60, 5, ?, "Nationality"
+    // Man at War,"Point value", 140, 3, 340, 80, 4, ?, "Nationality"
 
     public Integer getId() {
         return id;
@@ -122,5 +128,13 @@ public class Ship {
 
     public void setNationality(String nationality) {
         this.nationality = nationality;
+    }
+
+    public String getAmmunation() {
+        return ammunation;
+    }
+
+    public void setAmmunation(String ammunation) {
+        this.ammunation = ammunation;
     }
 }
