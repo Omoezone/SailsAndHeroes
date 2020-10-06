@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/test.css}" href="../static/css/test.css" type="text/css">
+</head>
+<body>
+
+<section>
+    <tr th:each="hex: ${list}">
+        <div>
+            <span class="test" th:value="${hex.getPosition()}"></span>
+        </div>
+    </tr>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $(".test").on('click', function(){
+            var char = $(this).val();
+            alert(char);
+        });
+    });
+</script>
+
+</body>
+</html>
