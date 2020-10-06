@@ -9,8 +9,7 @@ import sailsandheroes.demo.Model.Hex;
 public class HomeController {
 
     @GetMapping("/")
-    public String index(Model model){
-        model.addAttribute("Hex", new Hex(0, 0, 0));
+    public String index(){
         return "index";
     }
 }
