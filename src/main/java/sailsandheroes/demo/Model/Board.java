@@ -19,10 +19,10 @@ public class Board {
         this.hexGrid = hexGrid;
     }
 
-    public void fillBoard(int size){
+    public void fillBoard(int sizeX, int sizeY){
         this.hexGrid = new ArrayList<>();
-        for(int i = 0; i <= size; i++){
-            for(int j = 0; j <= size; j++){
+        for(int i = 0; i < sizeX; i++){
+            for(int j = 0; j < sizeY; j++){
                 Hex hex = new Hex(new Point(j,i));
                 hexGrid.add(hex);
             }

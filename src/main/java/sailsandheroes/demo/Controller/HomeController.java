@@ -3,6 +3,8 @@ package sailsandheroes.demo.Controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import sailsandheroes.demo.Model.Board;
 import sailsandheroes.demo.Model.Hex;
 import sailsandheroes.demo.Model.Ship;
@@ -16,26 +18,30 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(Model model){
-        List<Hex> mylist = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 6; j++) {
-                mylist.add(new Hex(new Point(j, i)));
-            }
-        }
+
         Board hexboard = new Board();
-        hexboard.fillBoard(6);
-        Ship ship = new Ship();
-        ship.setStartPos(new Point(1, 1));
-        System.out.println(ship);
-        /*for (Hex h : mylist) {
-            if (h.getPosition().x == ship.getStartPos().x && h.getPosition().y == ship.getStartPos().y) {
-                System.out.println("Equal");
-            }
-            else System.out.println("Not equal" + h.getPosition() + " and " + ship.getStartPos());
-        }*/
-        model.addAttribute("startpos", ship);
+        hexboard.fillBoard(6,12);
+
+        Ship myShip = new Ship();
+        myShip.setId(1);
+        myShip.setStartPos(new Point(1, 1));
+
+        model.addAttribute("ship", myShip);
         model.addAttribute("list", hexboard.getHexGrid());
 
         return "test";
+    }
+
+    @PostMapping("/movement")
+    public String movement(@RequestBody String data) {
+        data = data.replace("=", "");
+        String[] items = data.split("\\+");
+
+        int x = Integer.parseInt(items[0]);
+        int y = Integer.parseInt(items[3]);
+        int shipId = Integer.parseInt(items[6]);
+
+        Point point = new Point(x, y);
+        return "redirect:/test";
     }
 }

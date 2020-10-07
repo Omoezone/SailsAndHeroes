@@ -39,7 +39,8 @@ div span img {
 }
 img {
     vertical-align:bottom;
-    border:solid;
+    margin-top: 40px;
+    margin-left: 15px;
 }
 
 body {

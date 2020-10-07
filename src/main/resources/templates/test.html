@@ -11,20 +11,21 @@
 <section class="hex-grid-frame">
     <tr th:each="hex: ${list}">
         <div class="hex">
-            <span class="test" th:onclick="|showme(${hex.position.x}, ${hex.position.y})|">
-                <img th:src="@{/img/Brig_transparent_small.png}"  src="../static/img/Brig_transparent_small.png" height="50px" width="150px" alt="ship"
-                     th:hidden="${!(hex.getPosition().x == startpos.getStartPos().x && hex.getPosition().y == startpos.getStartPos().y)}"/>
+            <span class="test" th:onclick="|showme(${hex.position.x}, ${hex.position.y}, ${ship.getId()})|" th:value="${hex.getPosition().x}">
+                <img th:src="@{/img/Brig_transparent_small.png}"  src="../static/img/Brig_transparent_small.png" height="20px" width="80px" alt="ship"
+                     th:hidden="${!(hex.getPosition().x == ship.getStartPos().x && hex.getPosition().y == ship.getStartPos().y)}"/>
             </span>
         </div>
     </tr>
 </section>
 
-<script>
-    $(document).ready(function () {
-
-    });
-    function showme(posx, posy) {
-        alert(posx + ", " + posy)
+<script th:inline="javascript">
+    function showme(posx, posy, shipid) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "/movement", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send(posx + " + " + posy + " + " + shipid);
+        alert(posx + ", " + posy + ", " + shipid);
     }
 </script>
 
