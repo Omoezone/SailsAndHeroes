@@ -39,10 +39,16 @@ div span img {
 }
 img {
     vertical-align:bottom;
-    margin-top: 40px;
+    margin-top: 35px;
     margin-left: 15px;
 }
 
 body {
     background:#333;
+}
+
+.moves {
+    background: aquamarine;
+    height: 100px;
+    width: 200px;
 }
