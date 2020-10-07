@@ -3,6 +3,7 @@ package sailsandheroes.demo.Controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import sailsandheroes.demo.Model.Board;
 import sailsandheroes.demo.Model.Hex;
 import sailsandheroes.demo.Model.Ship;
 
@@ -21,6 +22,8 @@ public class HomeController {
                 mylist.add(new Hex(new Point(j, i)));
             }
         }
+        Board hexboard = new Board();
+        hexboard.fillBoard(6);
         Ship ship = new Ship();
         ship.setStartPos(new Point(1, 1));
         System.out.println(ship);
@@ -31,7 +34,7 @@ public class HomeController {
             else System.out.println("Not equal" + h.getPosition() + " and " + ship.getStartPos());
         }*/
         model.addAttribute("startpos", ship);
-        model.addAttribute("list", mylist);
+        model.addAttribute("list", hexboard.getHexGrid());
 
         return "test";
     }
