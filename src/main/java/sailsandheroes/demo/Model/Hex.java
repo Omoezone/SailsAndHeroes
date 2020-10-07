@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Hex {
 
-    private Point position = new Point(0,0);
+    private Point position;
     private Hex nW;
     private Hex n;
     private Hex nE;
@@ -13,6 +13,7 @@ public class Hex {
     private Hex sW;
 
     public Hex() {
+        position =  new Point(0,0);
     }
 
     public Hex(Point position) {
