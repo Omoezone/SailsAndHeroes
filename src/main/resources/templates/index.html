@@ -13,13 +13,13 @@
 <svg viewBox="0 -550 2100 1100" style="max-width: 31.25rem;">
     <g transform="translate(550,0)" fill="white" stroke="black" class="root">
         <g class="grid">
-            <g transform="translate(-150,-433)">
+            <g th:style="|transform: translate(${hex.center.getX()}, ${hex.center.getY()})|">
                 <g class="polygon">
                     <polygon points="100,0 50,-87 -50,-87 -100,-0 -50,87 50,87"></polygon>
                     <tspan x="-52" y="-16" class="q-coord">-1</tspan>
                 </g>
             </g>
-            <g transform="translate(150,-433)">
+            <!--<g transform="translate(150,-433)">
                 <g class="polygon">
                     <polygon points="100,0 50,-87 -50,-87 -100,-0 -50,87 50,87"></polygon>
                     <tspan x="-52" y="-16" class="q-coord">-1</tspan>
@@ -32,18 +32,16 @@
                     <tspan x="-52" y="-16" class="q-coord">-1</tspan>
                     <text id="coord">+1, -1</text>
                 </g>
-            </g>
+            </g> -->
 
         </g>
     </g>
 </svg>
-<p id="testo"></p>
-
 
 
 <script>
     $(document).ready(function () {
-        $(".polygon").click( test );
+        $(".polygon").click(test);
     });
 
     function test(){
