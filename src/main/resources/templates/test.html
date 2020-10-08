@@ -23,8 +23,9 @@
     <button onclick="send()">End turn</button>
 </div>
 <div class="moves">
-    <p>Turns left:</p>
-    <p id="moves" th:text="${ship.getSpeed()}"></p>
+    <p>Info</p>
+    <span id="moves" th:text="${'Turns left ' + ship.getSpeed()}"></span>
+    <span th:text="${'Direction: ' + ship.getDirection()}"></span>
 </div>
 
 <script th:inline="javascript">

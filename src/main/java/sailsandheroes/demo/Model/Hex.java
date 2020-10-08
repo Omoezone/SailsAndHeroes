@@ -86,6 +86,24 @@ public class Hex {
         this.sW = sW;
     }
 
+    public Hex getNeighbor(String direction) {
+        switch (direction) {
+            case "N":
+                return getN();
+            case "S":
+                return getS();
+            case "NW":
+                return getnW();
+            case "NE":
+                return getnE();
+            case "SW":
+                return getsW();
+            case "SE":
+                return getsE();
+        }
+        return new Hex();
+    }
+
     @Override
     public String toString() {
         return "Hex{" +

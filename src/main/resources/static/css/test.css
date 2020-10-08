@@ -35,8 +35,9 @@
 }
 
 div span img {
-    transform:rotate(-45deg) skew(0,0) scale(1.4,0.77) ;
+    transform:rotate(-45deg) skew(0,0) scale(1.4,0.77);
 }
+
 img {
     vertical-align:bottom;
     margin-top: 35px;
@@ -49,6 +50,6 @@ body {
 
 .moves {
     background: aquamarine;
-    height: 100px;
+    height: 125px;
     width: 200px;
 }
