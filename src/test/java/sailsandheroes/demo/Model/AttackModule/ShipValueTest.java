@@ -9,7 +9,7 @@ class ShipValueTest {
 
     @Test
     void testingShip() {
-        Ship ship = new Ship(1, "William", "Front", 160, 66, 240, 120, 4, "front", "dansk","balls");
+        Ship ship = new Ship(1, "William", "Front", 160.0, 66, 240, 120.0, 4, "front", "dansk","balls");
         ship.calculatePowerValue();
         assertEquals(33,ship.getPowerValue());
     }

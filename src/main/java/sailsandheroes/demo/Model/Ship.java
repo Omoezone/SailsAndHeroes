@@ -35,7 +35,7 @@ public class Ship {
     public Ship() {
     }
 
-    public Ship(Integer id, String name, String position, Integer hullQuality, Integer amountOfGuns, Integer amountOfSailors, Integer sailQuality, Integer speed, String direction, String nationality, String ammunition) {
+    public Ship(Integer id, String name, String position, Double hullQuality, Integer amountOfGuns, Integer amountOfSailors, Double sailQuality, Integer speed, String direction, String nationality, String ammunition) {
         this.id = id;
         this.name = name;
         this.position = position;
