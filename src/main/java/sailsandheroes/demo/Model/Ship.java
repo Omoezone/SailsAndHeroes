@@ -16,7 +16,7 @@ public class Ship {
     @Column(name="hullQuality")
     private Integer hullQuality;
     @Column(name="amountOfGunRows")
-    private Integer amountOfGunRows;
+    private Integer amountOfGuns;
     @Column(name="amountOfSailors")
     private Integer amountOfSailors;
     @Column(name="sailQuality")
@@ -27,21 +27,52 @@ public class Ship {
     private String direction;
     @Column(name="nationality")
     private String nationality;
+    @Column(name="powerValue")
+    private int powerValue;
+    @Column(name="powerValue")
+    private String ammunition;
 
     public Ship() {
     }
 
-    public Ship(Integer id, String name, String position, Integer hullQuality, Integer amountOfGunRows, Integer amountOfSailors, Integer sailQuality, Integer speed, String direction, String nationality) {
+    public Ship(Integer id, String name, String position, Integer hullQuality, Integer amountOfGuns, Integer amountOfSailors, Integer sailQuality, Integer speed, String direction, String nationality, String ammunition) {
         this.id = id;
         this.name = name;
         this.position = position;
         this.hullQuality = hullQuality;
-        this.amountOfGunRows = amountOfGunRows;
+        this.amountOfGuns = amountOfGuns;
         this.amountOfSailors = amountOfSailors;
         this.sailQuality = sailQuality;
         this.speed = speed;
         this.direction = direction;
         this.nationality = nationality;
+        this.ammunition = ammunition;
+    }
+
+    public void calculatePowerValue(){
+        int guns = amountOfGuns / 2;
+        int sailorPrGun = amountOfSailors/3;
+        if(guns < sailorPrGun){
+            powerValue = guns;
+        }else if(guns > sailorPrGun){
+            powerValue = sailorPrGun;
+        }
+    }
+
+    public String getAmmunition() {
+        return ammunition;
+    }
+
+    public void setAmmunition(String ammunition) {
+        this.ammunition = ammunition;
+    }
+
+    public int getPowerValue() {
+        return powerValue;
+    }
+
+    public void setPowerValue(int powerValue) {
+        this.powerValue = powerValue;
     }
 
     public Integer getId() {
@@ -76,12 +107,12 @@ public class Ship {
         this.hullQuality = hullQuality;
     }
 
-    public Integer getAmountOfGunRows() {
-        return amountOfGunRows;
+    public Integer getAmountOfGuns() {
+        return amountOfGuns;
     }
 
-    public void setAmountOfGunRows(Integer amountOfGunRows) {
-        this.amountOfGunRows = amountOfGunRows;
+    public void setAmountOfGuns(Integer amountOfGunRows) {
+        this.amountOfGuns = amountOfGunRows;
     }
 
     public Integer getAmountOfSailors() {
