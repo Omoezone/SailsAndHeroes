@@ -11,6 +11,14 @@ public class PlayerOrder {
     private Action action;
     private List<Point> coords;
 
+    public PlayerOrder() {
+    }
+
+    public PlayerOrder(Player player, Action action, List<Point> coords) {
+        this.player = player;
+        this.action = action;
+        this.coords = coords;
+    }
 
     public Player getPlayer() {
         return player;
