@@ -9,7 +9,4 @@ public class ShipController {
 
     @Autowired
     ShipService shipService;
-
-
-
 }
