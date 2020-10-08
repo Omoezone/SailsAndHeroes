@@ -5,7 +5,7 @@ import sailsandheroes.demo.Model.Player;
 import sailsandheroes.demo.Model.Ship;
 
 import java.util.List;
-
+// Lavet af William
 public class WinConditions {
 
     public static GameResult checkWinCondition(List<Player> list){

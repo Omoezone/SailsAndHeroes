@@ -29,11 +29,14 @@
 </div>
 
 <script th:inline="javascript">
+
     var coords = [];
+
     /*<![CDATA[*/
     coords.push(/*[[${ship.getId()}]]*/);
     /*]]>*/
     function showme(posx, posy) {
+        document.getElementById("colorChangeHex").style.backgroundColor="red";
         /*var xhttp = new XMLHttpRequest();
         xhttp.open("POST", "/movement", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

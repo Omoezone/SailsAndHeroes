@@ -15,7 +15,7 @@ public class PlayerOrderMaker {
             action = Action.ATTACK;
         }
         for (Player player : players) {
-            if (Integer.parseInt(shipID) == player.getShip().getId()) {
+            if (Integer.parseInt(shipID) == player.getShipList().get(0).getId()) {
                 return new PlayerOrder(player, action, coords);
             }
         }

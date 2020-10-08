@@ -6,7 +6,7 @@ import sailsandheroes.demo.Model.Ship;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ShipValueTest {
-
+// Lavet af William
     @Test
     void testingShip() {
         Ship ship = new Ship(1, "William", "Front", 160.0, 66, 240, 120.0, 4, "front", "dansk","balls");
