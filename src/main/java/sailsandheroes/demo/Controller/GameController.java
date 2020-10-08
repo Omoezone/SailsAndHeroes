@@ -5,8 +5,6 @@ import sailsandheroes.demo.Enums.PlayerNumber;
 import sailsandheroes.demo.Model.AttackModule.AttackMain;
 import sailsandheroes.demo.Model.PlayerOrder;
 import sailsandheroes.demo.Model.Player;
-import sailsandheroes.demo.Movement.*;
-import sailsandheroes.demo.Utility.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,48 +15,35 @@ public class GameController {
     private Action action;
     private PlayerNumber playerNumber;
     private Player player;
-    private List<Player> playerListForAttackLayer;
-    private PlayerOrderResult playerOrderResult;
-
-    Move movementLayer = new Move();
+    private List<Player> playerListForAttackLayer = new ArrayList<>();
+    private GameResult gameResult = GameResult.NONE;
 
     // tag imod playerOrder objekt. Instantier enums og switch på PlayerNumber og Action enums.
     // Kald metoder fra Movement og Attack "lag".
     // Modtag GameResult enum fra Attack
     // Kommuniker op igen til Game eller CommmunicationController
 
-    public PlayerOrderResult recievePlayerOrder(PlayerOrder playerOrder){
+    public GameResult recievePlayerOrder(PlayerOrder playerOrder){
         currentPlayerOrder = playerOrder;
         action = playerOrder.getAction();
         playerNumber = designatePlayerNumber();
         player = playerOrder.getPlayer();
 
-        return playerOrderResult = routeAndAskForGameResult();
+        return gameResult = routeAndAskForGameResult();
     }
 
-    public PlayerOrderResult routeAndAskForGameResult(){
-        PlayerOrderResult playerOrderResult = new PlayerOrderResult();
-
+    public GameResult routeAndAskForGameResult() {
         switch (playerNumber) {
             case PLAYER1:
                 switch (action){
                     case MOVE:
                         // todo -- send Player til move laget
                         System.out.println("move");
-                        boolean movementResult = movementLayer.moveShip(player);
-
-                        if(!movementResult){
-                            playerOrderResult.setTurnResult(TurnResult.FAILED);
-                        }
-
-                        return playerOrderResult;
+                        break;
                     case ATTACK:
-                        playerListForAttackLayer = new ArrayList<>();
                         playerListForAttackLayer.add(player);
-
                         System.out.println("til angreb din landkrabbe");
-
-                        return playerOrderResult;
+                        return gameResult;
                 }
                 break;
 
@@ -67,19 +52,10 @@ public class GameController {
                     case MOVE:
                         // todo -- send Player til move laget
                         System.out.println("move");
-
-                        boolean movementResult = movementLayer.moveShip(player);
-
-                        if(!movementResult){
-                            playerOrderResult.setTurnResult(TurnResult.FAILED);
-                        }
-                        return playerOrderResult;
-
+                        break;
                     case ATTACK:
                         playerListForAttackLayer.add(player);
-                        playerOrderResult.setGameResult(AttackMain.informationToAttack(playerListForAttackLayer));
-
-                        return playerOrderResult;
+                        return AttackMain.informationToAttack(playerListForAttackLayer);
                 }
                 break;
         }
@@ -95,7 +71,7 @@ public class GameController {
             return PlayerNumber.PLAYER2;
         }
         else {
-            System.out.println("playerID ikke gyldigt");
+            System.out.println("palyerID ikke gyldigt");
         }
         return null;
     }
