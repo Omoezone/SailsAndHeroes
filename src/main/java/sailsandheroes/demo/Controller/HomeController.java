@@ -1,5 +1,6 @@
 package sailsandheroes.demo.Controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import sailsandheroes.demo.Model.Board;
 import sailsandheroes.demo.Model.Ship;
+import sailsandheroes.demo.Movement.Collision;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -16,9 +18,9 @@ import java.util.List;
 @Controller
 public class HomeController {
 
+
     @GetMapping("/")
     public String index(Model model){
-
         Board hexboard = new Board();
         hexboard.fillBoard(6,12);
 
@@ -27,22 +29,15 @@ public class HomeController {
         myShip.setStartPos(new Point(1, 1));
         myShip.setSpeed(5);
 
+
+
         model.addAttribute("ship", myShip);
         model.addAttribute("list", hexboard.getHexGrid());
-
         return "test";
     }
 
     @PostMapping("/movement")
     public String movement(@RequestBody String data) {
-        /*data = data.replace("=", "");
-        String[] items = data.split("\\+");
-
-        int x = Integer.parseInt(items[0]);
-        int y = Integer.parseInt(items[3]);
-        int shipId = Integer.parseInt(items[6]);
-
-        Point point = new Point(x, y);*/
         String[] test = data.split(",");
         List<Point> myPoints = new ArrayList<>();
         int shipId = Integer.parseInt(test[0]);
@@ -55,5 +50,6 @@ public class HomeController {
         System.out.println("Id of ship is: " + shipId);
         System.out.println(myPoints);
         return "redirect:/test";
+
     }
 }

@@ -3,6 +3,9 @@ package sailsandheroes.demo.Model;
 
 import javax.persistence.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Table(name="SHIPS")
@@ -32,6 +35,17 @@ public class Ship {
 
     private Point startPos;
 
+   @ElementCollection
+    private List<Point> PointList;
+
+    public List getPointList() {
+        return PointList;
+    }
+
+    public void setPointList(List pointList) {
+        PointList = pointList;
+    }
+
     public Point getStartPos() {
         return startPos;
     }
@@ -42,6 +56,9 @@ public class Ship {
 
     public Ship() {
     }
+
+
+
 
     public Ship(Integer id, String name, String position, Integer hullQuality, Integer amountOfGunRows, Integer amountOfSailors, Integer sailQuality, Integer speed, String direction, String nationality) {
         this.id = id;
