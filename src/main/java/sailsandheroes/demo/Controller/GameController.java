@@ -19,8 +19,7 @@ public class GameController {
     private Player player;
     private List<Player> playerListForAttackLayer;
     private PlayerOrderResult playerOrderResult;
-
-    Move movementLayer = new Move();
+    private Move movementLayer = new Move();
 
     // tag imod playerOrder objekt. Instantier enums og switch på PlayerNumber og Action enums.
     // Kald metoder fra Movement og Attack "lag".
@@ -44,7 +43,7 @@ public class GameController {
                 switch (action){
                     case MOVE:
                         // todo -- send Player til move laget
-                        System.out.println("move");
+                        System.out.println("GameController: player 1 move");
                         boolean movementResult = movementLayer.moveShip(player);
 
                         if(!movementResult){
@@ -52,11 +51,12 @@ public class GameController {
                         }
 
                         return playerOrderResult;
+
                     case ATTACK:
                         playerListForAttackLayer = new ArrayList<>();
                         playerListForAttackLayer.add(player);
 
-                        System.out.println("til angreb din landkrabbe");
+                        System.out.println("GameController: player 1 til angreb din landkrabbe");
 
                         return playerOrderResult;
                 }
@@ -66,7 +66,7 @@ public class GameController {
                 switch (action){
                     case MOVE:
                         // todo -- send Player til move laget
-                        System.out.println("move");
+                        System.out.println("GameController: player 2 move");
 
                         boolean movementResult = movementLayer.moveShip(player);
 
@@ -78,6 +78,7 @@ public class GameController {
                     case ATTACK:
                         playerListForAttackLayer.add(player);
                         playerOrderResult.setGameResult(AttackMain.informationToAttack(playerListForAttackLayer));
+                        System.out.println("GameController: player 2 til angreb din landkrabbe");
 
                         return playerOrderResult;
                 }
