@@ -21,5 +21,6 @@ public class AttackMain {
         checkWinConditions(list);
         //none - no result
         //PLAYER1
+        return GameResult ; // TODO return statement here
     }
 }
