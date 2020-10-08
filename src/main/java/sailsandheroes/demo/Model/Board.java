@@ -79,7 +79,7 @@ public class Board {
                     }
                 }
             }
-            System.out.println(hex);
+            //System.out.println(hex);
         }
     }
 
