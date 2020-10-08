@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import sailsandheroes.demo.Model.Ship;
 import sailsandheroes.demo.Repository.ShipRepositoryI;
 
+import java.awt.*;
 import java.util.List;
 
 @Service
@@ -29,5 +30,15 @@ public class ShipService {
 
     public void deleteShip(Integer id){
         shipRepositoryI.deleteById(id);
+    }
+
+    public Ship getShipById(int id) {
+        Ship ship = new Ship();
+        ship.setId(1);
+        ship.setPosition(new Point(1, 1));
+        ship.setSpeed(100);
+        ship.setDirection("SE");
+
+        return ship;
     }
 }

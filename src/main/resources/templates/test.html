@@ -14,7 +14,7 @@
         <div class="hex">
             <span class="test" th:onclick="|showme(${hex.position.x}, ${hex.position.y})|" th:value="${hex.getPosition().x}">
                 <img th:src="@{/img/Brig_transparent_small.png}"  src="../static/img/Brig_transparent_small.png" height="20px" width="80px" alt="ship"
-                     th:hidden="${!(hex.getPosition().x == ship.getStartPos().x && hex.getPosition().y == ship.getStartPos().y)}"/>
+                     th:hidden="${!(hex.getPosition().x == ship.getPosition().x && hex.getPosition().y == ship.getPosition().y)}"/>
             </span>
         </div>
     </tr>
@@ -24,7 +24,7 @@
 </div>
 <div class="moves">
     <p>Info</p>
-    <span id="moves" th:text="${'Turns left ' + ship.getSpeed()}"></span>
+    <span id="moves" th:text="${ship.getSpeed()}"></span>
     <span th:text="${'Direction: ' + ship.getDirection()}"></span>
 </div>
 
@@ -34,19 +34,15 @@
     coords.push(/*[[${ship.getId()}]]*/);
     /*]]>*/
     function showme(posx, posy) {
-        /*var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "/movement", true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send(posx + " + " + posy + " + " + shipid);*/
-        var movesdiv = $("#moves");
-        if (movesdiv.text() === "0") {
+        var movesspan = $("#moves");
+        if (movesspan.text() === "0") {
             alert("You have no more moves left")
             return;
         }
         coords.push(posx);
         coords.push(posy);
-        var moves = movesdiv.text();
-        movesdiv.text(moves - 1);
+        var moves = movesspan.text();
+        movesspan.text(moves - 1);
         alert(posx + ", " + posy);
     }
     function send() {
