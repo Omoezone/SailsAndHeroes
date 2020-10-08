@@ -30,6 +30,7 @@
 
 <script th:inline="javascript">
     var coords = [];
+    var actionBool;
     /*<![CDATA[*/
     coords.push(/*[[${ship.getId()}]]*/);
     /*]]>*/
@@ -50,9 +51,11 @@
         alert(posx + ", " + posy);
     }
     function send() {
+        actionBool = 1;
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", "/movement", true);
         xhttp.setRequestHeader("Content-type", "application/json");
+        coords.push(actionBool);
         xhttp.send(coords);
     }
 </script>

@@ -6,9 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import sailsandheroes.demo.Model.Board;
-import sailsandheroes.demo.Model.Hex;
-import sailsandheroes.demo.Model.Ship;
+import sailsandheroes.demo.Model.*;
 import sailsandheroes.demo.Movement.Collision;
 import sailsandheroes.demo.Movement.Move;
 
@@ -20,19 +18,22 @@ import java.util.List;
 @Controller
 public class HomeController {
 
+    Game game;
+
     @GetMapping("/")
     public String index(Model model){
+        game = new Game();
+        game.createDefaultGame();
+        //Board hexboard = new Board();
+        //hexboard.fillBoard(6,12);
 
-        Board hexboard = new Board();
-        hexboard.fillBoard(6,12);
-
-        Ship myShip = new Ship();
+        Ship myShip = game.getPlayers().get(0).getShip();
         myShip.setId(1);
         myShip.setStartPos(new Point(1, 1));
         myShip.setSpeed(100);
         myShip.setDirection("SE");
 
-        for (Hex hex : hexboard.getHexGrid()) {
+        for (Hex hex : game.getBoard().getHexGrid()) {
             if (hex.getPosition().x == 4 && hex.getPosition().y == 3) {
                 System.out.println("North is: " + hex.getN());
                 System.out.println("South is: " + hex.getS());
@@ -44,8 +45,7 @@ public class HomeController {
         }
 
         model.addAttribute("ship", myShip);
-        model.addAttribute("list", hexboard.getHexGrid());
-
+        model.addAttribute("list", game.getBoard().getHexGrid());
         Move move = new Move();
         move.moveShip();
 
@@ -57,14 +57,23 @@ public class HomeController {
         String[] test = data.split(",");
         List<Point> myPoints = new ArrayList<>();
         int shipId = Integer.parseInt(test[0]);
-        for (int i = 1, j = 2; i < test.length; i+=2) {
+        for (int i = 1, j = 2; i < test.length - 1; i+=2) {
             int x = Integer.parseInt(test[i]);
             int y = Integer.parseInt(test[j]);
             myPoints.add(new Point(x, y));
             j += 2;
         }
         System.out.println("Id of ship is: " + shipId);
+        System.out.println(data);
         System.out.println(myPoints);
+        boolean isAction = false;
+        if(test[test.length-1].equals("1")){
+            isAction = true;
+        }
+        System.out.println(isAction);
+        PlayerOrder playerOrder = PlayerOrderMaker.createPlayerOrder(isAction,myPoints,"" + shipId,game.getPlayers());
+        System.out.println(playerOrder);
+        //Send to gameController
         return "redirect:/test";
     }
 }
