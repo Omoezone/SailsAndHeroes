@@ -7,6 +7,7 @@ public class Damage {
     public static int calculate(Ship shooter, Ship enemy, double hitChance){
         //damage formular (p. 16)
         // hitChance * Firing Power
+        shooter.calculatePowerValue();
         double damage = hitChance * shooter.getPowerValue();
 
         switch(shooter.getAmmunition()){
