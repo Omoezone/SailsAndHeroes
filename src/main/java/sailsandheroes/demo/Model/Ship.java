@@ -48,7 +48,7 @@ public class Ship {
         this.nationality = nationality;
         this.ammunition = ammunition;
     }
-
+// Lavet af William
     public void calculatePowerValue(){
         int guns = amountOfGuns / 2;
         int sailorPrGun = amountOfSailors/3;

@@ -6,6 +6,7 @@ import sailsandheroes.demo.Model.Ship;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ShipValueTest {
+
     @Test
     void testingShip() {
         Ship ship = new Ship(1, "William", "Front", 160, 66, 240, 120, 4, "front", "dansk","balls");

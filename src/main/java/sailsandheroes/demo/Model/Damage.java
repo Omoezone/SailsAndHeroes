@@ -1,6 +1,9 @@
 package sailsandheroes.demo.Model;
 
+import java.util.Random;
+
 public class Damage {
+    // Lavet af Benjamin
     public static int calculate(Ship shooter, Ship enemy, double hitChance){
         //damage formular (p. 16)
         // hitChance * Firing Power
@@ -22,19 +25,38 @@ public class Damage {
 
         return -1;
     }
-    public static int crit(Ship shooter, Ship enemy, double crit){
-        //cannon ball
-            //1 Ship explodes
-            //2 rudder lost (no future turning)
-        //Chain shot
-            //1 all riggin lost (ship breaks 1/turn)
-            //2 33% of rigging lost
-        //Grape Shot
-            //1 -50% of sailors
-            //2 -25% of salors
-        return -1;
-    }
-
+    // Lavet af William
+    public static void criticalShot(Ship shooter, Ship enemy, int crit, Random random){
+        crit = random.nextInt(20)+1;
+            switch(shooter.getAmmunition()){
+                // Ship explodes and hull health is set to 0
+                case "Cannon Ball":
+                    if(crit == 1) {
+                        enemy.setHullQuality(0);
+                        //TODO kill ship
+                    }else if(crit == 2){
+                        // TODO no more turning
+                    }else
+                        break;
+                // x amount of sails is destroyed and set sail health to 0
+                case "Chain Shot":
+                    if(crit == 1) {
+                        enemy.setSailQuality(0);
+                    }else if(crit == 2){
+                        enemy.setSailQuality(enemy.getSailQuality() / 33);
+                    }else
+                        break;
+                // Kill % of the sailors on a ship
+                case "Grape Shot":
+                    if(crit == 1){
+                        enemy.setAmountOfSailors(enemy.getAmountOfSailors()/2);
+                    }else if(crit == 2){
+                        enemy.setAmountOfSailors(enemy.getAmountOfSailors()-enemy.getAmountOfSailors()/4);
+                    }else
+                        break;
+            }
+        }
+    // MOVEMENT GUYS
     public static int collision(Ship ship, Ship ship2){
         //Hull damage = 1/3 of actual hull value of the other ship, i.e
         //Actual hull = previous actual hull - hull damage

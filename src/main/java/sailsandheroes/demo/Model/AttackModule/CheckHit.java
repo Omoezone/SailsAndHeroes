@@ -12,6 +12,7 @@ public class CheckHit {
     //Ship shooter = the ship shooting
     //Ship enemy = the ship getting hit (potentially (:3) )
     //TODO WHAT SHOULD RETURN TYPE BE? Boolean if hit? Void?
+    //Lavet af Benjamin
     public static boolean checkHit(ArrayList<Point> path, Ship shooter, Ship enemy, Point point){
         Random random = new Random();
 
@@ -22,12 +23,11 @@ public class CheckHit {
             //40 percent for hit
             if(chance >= 0.4){
                 //Calculate if crit
-                double critChance = random.nextDouble();
-                if (critChance <= 0.1){
+                if (chance <= 0.1){
                     //roll if crit hits
-                    double crit = random.nextDouble();
+                    int crit = random.nextInt();
                     if(crit >= 2){
-                        Damage.crit(shooter, enemy, crit);
+                        Damage.criticalShot(shooter, enemy, crit, random);
                     }else{
                         return false; //Miss (according to the rules)
                     }
@@ -84,6 +84,7 @@ public class CheckHit {
                 Damage.calculate(shooter, enemy, chance);
             }
         }
+
         return false;
     }
 }
