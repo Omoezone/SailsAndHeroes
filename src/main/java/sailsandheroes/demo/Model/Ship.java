@@ -42,13 +42,98 @@ public class Ship {
     public void setPath(List<Point> path) {
         this.path = path;
     }
+    @Column(name="position")
+    private String position;
+    @Column(name="hullQuality")
+    private double hullQuality;
+    @Column(name="amountOfGunRows")
+    private Integer amountOfGuns;
+    @Column(name="amountOfSailors")
+    private Integer amountOfSailors;
+    @Column(name="sailQuality")
+    private double sailQuality;
+    @Column(name="speed")
+    private Integer speed;
+    @Column(name="direction")
+    private String direction;
+    @Column(name="nationality")
+    private String nationality;
+    @Column(name="powerValue")
+    private int powerValue;
+    @Column(name="powerValue")
+    private String ammunition;
+
+    public Ship() {
+    }
+
+    public Ship(Integer id, String name, String position, Double hullQuality, Integer amountOfGuns, Integer amountOfSailors, Double sailQuality, Integer speed, String direction, String nationality, String ammunition) {
+        this.id = id;
+        this.name = name;
+        this.position = position;
+        this.hullQuality = hullQuality;
+        this.amountOfGuns = amountOfGuns;
+        this.amountOfSailors = amountOfSailors;
+        this.sailQuality = sailQuality;
+        this.speed = speed;
+        this.direction = direction;
+        this.nationality = nationality;
+        this.ammunition = ammunition;
+    }
+// Lavet af William
+    public void calculatePowerValue(){
+        int guns = amountOfGuns / 2;
+        int sailorPrGun = amountOfSailors/3;
+        if(guns < sailorPrGun){
+            powerValue = guns;
+        }else if(guns > sailorPrGun){
+            powerValue = sailorPrGun;
+        }
+    }
+
+    public String getAmmunition() {
+        return ammunition;
+    }
+
+    public void setAmmunition(String ammunition) {
+        this.ammunition = ammunition;
+    }
+
+    public int getPowerValue() {
+        return powerValue;
+    }
+
+    public void setPowerValue(int powerValue) {
+        this.powerValue = powerValue;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Point getStartPos() {
         return startPos;
     }
+    public String getPosition() {
+        return position;
+    }
 
     public void setStartPos(Point startPos) {
         this.startPos = startPos;
+    }
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public Ship() {
