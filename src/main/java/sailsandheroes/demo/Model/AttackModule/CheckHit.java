@@ -13,12 +13,12 @@ public class CheckHit {
     //Ship enemy = the ship getting hit (potentially (:3) )
     //TODO WHAT SHOULD RETURN TYPE BE? Boolean if hit? Void?
     //Lavet af Benjamin
-    public static boolean checkHit(ArrayList<Point> path, Ship shooter, Ship enemy, Point point){
+    public static boolean checkHit(Ship shooter, Ship enemy, Point point){
         Random random = new Random();
 
         //TODO WHAT IF ENEMY DOESN'T MOVE? THE LIST WOULD BE EMPTY NO? if (*statement* || point matches ship current position?)
         //Check center
-        if(path.contains(new Point(point.x, point.y))){
+        if(enemy.getPath().contains(new Point(point.x, point.y))){
             double chance = random.nextDouble();
             //40 percent for hit
             if(chance >= 0.4){
@@ -32,7 +32,7 @@ public class CheckHit {
             }
         }
         //Check north
-        if(path.contains(new Point(point.x, point.y - 1))){
+        if(enemy.getPath().contains(new Point(point.x, point.y - 1))){
             double chance = random.nextDouble();
             //10 percent for hit
             if(chance >= 0.1){
@@ -40,7 +40,7 @@ public class CheckHit {
             }
         }
         //Check north-west
-        if(path.contains(new Point(point.x - 1, point.y))){
+        if(enemy.getPath().contains(new Point(point.x - 1, point.y))){
             double chance = random.nextDouble();
             //10 percent for hit
             if(chance >= 0.1){
@@ -48,7 +48,7 @@ public class CheckHit {
             }
         }
         //Check south-west
-        if(path.contains(new Point(point.x - 1, point.y + 1))){
+        if(enemy.getPath().contains(new Point(point.x - 1, point.y + 1))){
             double chance = random.nextDouble();
             //10 percent for hit
             if(chance >= 0.1){
@@ -56,7 +56,7 @@ public class CheckHit {
             }
         }
         //Check south
-        if(path.contains(new Point(point.x, point.y + 1))){
+        if(enemy.getPath().contains(new Point(point.x, point.y + 1))){
             double chance = random.nextDouble();
             //10 percent for hit
             if(chance >= 0.1){
@@ -64,7 +64,7 @@ public class CheckHit {
             }
         }
         //Check south-east
-        if(path.contains(new Point(point.x + 1, point.y + 1))){
+        if(enemy.getPath().contains(new Point(point.x + 1, point.y + 1))){
             double chance = random.nextDouble();
             //10 percent for hit
             if(chance >= 0.1){
@@ -72,7 +72,7 @@ public class CheckHit {
             }
         }
         //Check north-east
-        if(path.contains(new Point(point.x + 1, point.y))){
+        if(enemy.getPath().contains(new Point(point.x + 1, point.y))){
             double chance = random.nextDouble();
             //10 percent for hit
             if(chance >= 0.1){
