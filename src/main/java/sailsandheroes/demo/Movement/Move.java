@@ -27,6 +27,7 @@ public class Move {
 
 
     public Move() {
+
     }
 
     public void moveShip() {
