@@ -1,0 +1,55 @@
+.hex {
+    margin:0 0;
+    height:90px;
+    width:100px;
+    position:relative;
+    overflow:hidden;
+    display:inline-block;
+    margin-right:-27px;
+    vertical-align:middle;
+}
+
+.hex:nth-child(odd) {
+    margin-bottom:2px;
+}
+.hex:nth-child(even) {
+    margin-bottom:-90px;
+}
+
+.hex span {
+    overflow:hidden;
+    position:absolute;
+    height:110%;
+    width:100%;
+    top:-5%;
+    left:0;
+    background:blue;
+    transform:rotate(45.5deg) skew(16.5deg,15.5deg);
+}
+
+.hex-grid-frame {
+    width:920px;
+    margin:auto;
+    background: lime;
+    padding:1px 28px 45px 1px;
+}
+
+div span img {
+    transform:rotate(-45deg) skew(0,0) scale(1.4,0.77);
+}
+
+img {
+    vertical-align:bottom;
+    margin-top: 35px;
+    margin-left: 15px;
+}
+
+body {
+    background:#333;
+}
+
+.moves {
+    background: aquamarine;
+    height: 125px;
+    width: 200px;
+}
