@@ -1,6 +1,5 @@
 package sailsandheroes.demo.Model;
 
-
 import javax.persistence.*;
 import java.awt.*;
 import java.util.List;
@@ -15,7 +14,7 @@ public class Ship {
     @Column(name="name")
     private String name;
     @Column(name="position")
-    private String position;
+    private Point position;
     @Column(name="hullQuality")
     private double hullQuality;
     @Column(name="amountOfGunRows")
@@ -35,14 +34,13 @@ public class Ship {
     @Column(name="ammunition")
     private String ammunition;
 
-    private Point startPos; //TODO skal dette ind i constructor
     @ElementCollection
     private List<Point> path;
 
     public Ship() {
     }
 
-    public Ship(Integer id, String name, String position, Double hullQuality, Integer amountOfGuns, Integer amountOfSailors, Double sailQuality, Integer speed, String direction, String nationality, String ammunition) {
+    public Ship(Integer id, String name, Point position, Double hullQuality, Integer amountOfGuns, Integer amountOfSailors, Double sailQuality, Integer speed, String direction, String nationality, String ammunition) {
         this.id = id;
         this.name = name;
         this.position = position;
@@ -82,11 +80,11 @@ public class Ship {
         this.name = name;
     }
 
-    public String getPosition() {
+    public Point getPosition() {
         return position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(Point position) {
         this.position = position;
     }
 
@@ -162,14 +160,6 @@ public class Ship {
         this.ammunition = ammunition;
     }
 
-    public Point getStartPos() {
-        return startPos;
-    }
-
-    public void setStartPos(Point startPos) {
-        this.startPos = startPos;
-    }
-
     public List<Point> getPath() {
         return path;
     }
@@ -191,7 +181,6 @@ public class Ship {
                 ", speed=" + speed +
                 ", direction='" + direction + '\'' +
                 ", nationality='" + nationality + '\'' +
-                ", startPos=" + startPos +
                 '}';
     }
 }
