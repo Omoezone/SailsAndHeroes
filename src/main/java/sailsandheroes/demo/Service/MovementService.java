@@ -16,4 +16,6 @@ public class MovementService {
     public boolean Move(Ship ship) {
         return move.moveShip(ship);
     }
+
+
 }

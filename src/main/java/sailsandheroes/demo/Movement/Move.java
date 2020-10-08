@@ -10,9 +10,9 @@ import java.util.Map;
 
 public class Move {
 
-    private Board hexboard = new Board();
+    private final Board hexboard = new Board();
     private Hex startHex;
-    private Map<String, Integer> directions = new HashMap<>();
+    private final Map<String, Integer> directions = new HashMap<>();
     {
         hexboard.fillBoard(6, 12);
         directions.put("N", 1);
@@ -62,7 +62,9 @@ public class Move {
 
         for (Point p : myShip.getPath()) {
             String direction = validMove(myShip, p);
-            myShip.setDirection(direction);
+            if (!(direction.equals("false"))) {
+                myShip.setDirection(direction);
+            }
             if (direction.equals("false")) {
                 return false;
             }
