@@ -25,12 +25,6 @@ public class CheckHit {
                 //Calculate if crit
                 if (chance <= 0.1){
                     //roll if crit hits
-                    int crit = random.nextInt();
-                    if(crit >= 2){
-                        Damage.criticalShot(shooter, enemy, crit, random);
-                    }else{
-                        return false; //Miss (according to the rules)
-                    }
                 }
                 //Hit, but didn't crit - Calculate normal damage
                 Damage.calculate(shooter, enemy, 0.4);

@@ -23,8 +23,8 @@ public class Damage {
         return -1;
     }
     // Lavet af William
-    public static void criticalShot(Ship shooter, Ship enemy, int crit, Random random){
-        crit = random.nextInt(20)+1;
+    public static void criticalShot(Ship shooter, Ship enemy, Random random){
+        int crit = random.nextInt(20)+1;
             switch(shooter.getAmmunition()){
                 // Ship explodes and hull health is set to 0
                 case "Cannon Ball":
@@ -40,7 +40,7 @@ public class Damage {
                     if(crit == 1) {
                         enemy.setSailQuality(0);
                     }else if(crit == 2){
-                        enemy.setSailQuality(enemy.getSailQuality() / 33);
+                        enemy.setSailQuality(enemy.getSailQuality()- enemy.getSailQuality()/3);
                     }else
                         break;
                 // Kill % of the sailors on a ship

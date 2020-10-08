@@ -59,8 +59,8 @@ class DamageTest {
         // Test that it can substracts the life of sails correctly
         defender.setSailQuality(0);
         assertEquals(0,defender.getSailQuality());
-        defender.setSailQuality(111);
-        assertEquals(37, defender.getSailQuality()/3);
+        defender.setSailQuality(120);
+        assertEquals(80, defender.getSailQuality()- defender.getSailQuality()/3);
 
     }
 
