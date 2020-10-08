@@ -14,13 +14,13 @@ public class Ship {
     @Column(name="position")
     private String position;
     @Column(name="hullQuality")
-    private Integer hullQuality;
+    private double hullQuality;
     @Column(name="amountOfGunRows")
     private Integer amountOfGuns;
     @Column(name="amountOfSailors")
     private Integer amountOfSailors;
     @Column(name="sailQuality")
-    private Integer sailQuality;
+    private double sailQuality;
     @Column(name="speed")
     private Integer speed;
     @Column(name="direction")
@@ -99,11 +99,11 @@ public class Ship {
         this.position = position;
     }
 
-    public Integer getHullQuality() {
+    public double getHullQuality() {
         return hullQuality;
     }
 
-    public void setHullQuality(Integer hullQuality) {
+    public void setHullQuality(double hullQuality) {
         this.hullQuality = hullQuality;
     }
 
@@ -123,11 +123,11 @@ public class Ship {
         this.amountOfSailors = amountOfSailors;
     }
 
-    public Integer getSailQuality() {
+    public double getSailQuality() {
         return sailQuality;
     }
 
-    public void setSailQuality(Integer sailQuality) {
+    public void setSailQuality(double sailQuality) {
         this.sailQuality = sailQuality;
     }
 

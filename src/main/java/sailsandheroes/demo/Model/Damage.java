@@ -4,22 +4,19 @@ public class Damage {
     public static int calculate(Ship shooter, Ship enemy, double hitChance){
         //damage formular (p. 16)
         // hitChance * Firing Power
+        double damage = hitChance * shooter.getPowerValue();
 
-        //calculate damage
-        //set where damage was done
-
-        //Cannon ball
-            //damages hull
-        //Chain shot
-            //damages rigging
-        //Grape shot
-            //damages sailors
-
-        //10%
-        //damage if hit = 0.1 * Firing value
-        //40%
-        //damage if hit = 0.4 * Firing value
-
+        switch(shooter.getAmmunition()){
+            case "Cannon Ball":
+                enemy.setHullQuality(enemy.getHullQuality() - damage);
+                break;
+            case "Chain Shot":
+                enemy.setSailQuality(enemy.getSailQuality() - damage);
+                break;
+            case "Grape Shot":
+                enemy.setAmountOfSailors((int)(enemy.getAmountOfSailors() - damage));
+                break;
+        }
         return -1;
     }
     public static int crit(Ship shooter, Ship enemy, double crit){

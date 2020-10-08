@@ -33,7 +33,7 @@ public class CheckHit {
                     }
                 }
                 //Hit, but didn't crit - Calculate normal damage
-                Damage.calculate(shooter, enemy, chance);
+                Damage.calculate(shooter, enemy, 0.4);
             }
         }
         //Check north
@@ -41,7 +41,7 @@ public class CheckHit {
             double chance = random.nextDouble();
             //10 percent for hit
             if(chance >= 0.1){
-                Damage.calculate(shooter, enemy, chance);
+                Damage.calculate(shooter, enemy, 0.1);
             }
         }
         //Check north-west
@@ -49,7 +49,7 @@ public class CheckHit {
             double chance = random.nextDouble();
             //10 percent for hit
             if(chance >= 0.1){
-                Damage.calculate(shooter, enemy, chance);
+                Damage.calculate(shooter, enemy, 0.1);
             }
         }
         //Check south-west
@@ -57,7 +57,7 @@ public class CheckHit {
             double chance = random.nextDouble();
             //10 percent for hit
             if(chance >= 0.1){
-                Damage.calculate(shooter, enemy, chance);
+                Damage.calculate(shooter, enemy, 0.1);
             }
         }
         //Check south
@@ -65,7 +65,7 @@ public class CheckHit {
             double chance = random.nextDouble();
             //10 percent for hit
             if(chance >= 0.1){
-                Damage.calculate(shooter, enemy, chance);
+                Damage.calculate(shooter, enemy, 0.1);
             }
         }
         //Check south-east
@@ -73,7 +73,7 @@ public class CheckHit {
             double chance = random.nextDouble();
             //10 percent for hit
             if(chance >= 0.1){
-                Damage.calculate(shooter, enemy, chance);
+                Damage.calculate(shooter, enemy, 0.1);
             }
         }
         //Check north-east
@@ -81,7 +81,7 @@ public class CheckHit {
             double chance = random.nextDouble();
             //10 percent for hit
             if(chance >= 0.1){
-                Damage.calculate(shooter, enemy, chance);
+                Damage.calculate(shooter, enemy, 0.1);
             }
         }
         return false;
