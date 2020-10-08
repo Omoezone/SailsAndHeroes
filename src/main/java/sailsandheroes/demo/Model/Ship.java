@@ -17,34 +17,6 @@ public class Ship {
     @Column(name="position")
     private String position;
     @Column(name="hullQuality")
-    private Integer hullQuality;
-    @Column(name="amountOfGunRows")
-    private Integer amountOfGunRows;
-    @Column(name="amountOfSailors")
-    private Integer amountOfSailors;
-    @Column(name="sailQuality")
-    private Integer sailQuality;
-    @Column(name="speed")
-    private Integer speed;
-    @Column(name="direction")
-    private String direction;
-    @Column(name="nationality")
-    private String nationality;
-
-    private Point startPos;
-    @ElementCollection
-    private List<Point> path;
-
-    public List<Point> getPath() {
-        return path;
-    }
-
-    public void setPath(List<Point> path) {
-        this.path = path;
-    }
-    @Column(name="position")
-    private String position;
-    @Column(name="hullQuality")
     private double hullQuality;
     @Column(name="amountOfGunRows")
     private Integer amountOfGuns;
@@ -62,6 +34,10 @@ public class Ship {
     private int powerValue;
     @Column(name="powerValue")
     private String ammunition;
+
+    private Point startPos; //TODO skal dette ind i constructor
+    @ElementCollection
+    private List<Point> path;
 
     public Ship() {
     }
@@ -90,68 +66,6 @@ public class Ship {
         }
     }
 
-    public String getAmmunition() {
-        return ammunition;
-    }
-
-    public void setAmmunition(String ammunition) {
-        this.ammunition = ammunition;
-    }
-
-    public int getPowerValue() {
-        return powerValue;
-    }
-
-    public void setPowerValue(int powerValue) {
-        this.powerValue = powerValue;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Point getStartPos() {
-        return startPos;
-    }
-    public String getPosition() {
-        return position;
-    }
-
-    public void setStartPos(Point startPos) {
-        this.startPos = startPos;
-    }
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
-    public Ship() {
-    }
-
-    public Ship(Integer id, String name, String position, Integer hullQuality, Integer amountOfGunRows, Integer amountOfSailors, Integer sailQuality, Integer speed, String direction, String nationality) {
-        this.id = id;
-        this.name = name;
-        this.position = position;
-        this.hullQuality = hullQuality;
-        this.amountOfGunRows = amountOfGunRows;
-        this.amountOfSailors = amountOfSailors;
-        this.sailQuality = sailQuality;
-        this.speed = speed;
-        this.direction = direction;
-        this.nationality = nationality;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -176,20 +90,20 @@ public class Ship {
         this.position = position;
     }
 
-    public Integer getHullQuality() {
+    public double getHullQuality() {
         return hullQuality;
     }
 
-    public void setHullQuality(Integer hullQuality) {
+    public void setHullQuality(double hullQuality) {
         this.hullQuality = hullQuality;
     }
 
-    public Integer getAmountOfGunRows() {
-        return amountOfGunRows;
+    public Integer getAmountOfGuns() {
+        return amountOfGuns;
     }
 
-    public void setAmountOfGunRows(Integer amountOfGunRows) {
-        this.amountOfGunRows = amountOfGunRows;
+    public void setAmountOfGuns(Integer amountOfGuns) {
+        this.amountOfGuns = amountOfGuns;
     }
 
     public Integer getAmountOfSailors() {
@@ -200,11 +114,11 @@ public class Ship {
         this.amountOfSailors = amountOfSailors;
     }
 
-    public Integer getSailQuality() {
+    public double getSailQuality() {
         return sailQuality;
     }
 
-    public void setSailQuality(Integer sailQuality) {
+    public void setSailQuality(double sailQuality) {
         this.sailQuality = sailQuality;
     }
 
@@ -232,6 +146,38 @@ public class Ship {
         this.nationality = nationality;
     }
 
+    public int getPowerValue() {
+        return powerValue;
+    }
+
+    public void setPowerValue(int powerValue) {
+        this.powerValue = powerValue;
+    }
+
+    public String getAmmunition() {
+        return ammunition;
+    }
+
+    public void setAmmunition(String ammunition) {
+        this.ammunition = ammunition;
+    }
+
+    public Point getStartPos() {
+        return startPos;
+    }
+
+    public void setStartPos(Point startPos) {
+        this.startPos = startPos;
+    }
+
+    public List<Point> getPath() {
+        return path;
+    }
+
+    public void setPath(List<Point> path) {
+        this.path = path;
+    }
+
     @Override
     public String toString() {
         return "Ship{" +
@@ -239,7 +185,7 @@ public class Ship {
                 ", name='" + name + '\'' +
                 ", position='" + position + '\'' +
                 ", hullQuality=" + hullQuality +
-                ", amountOfGunRows=" + amountOfGunRows +
+                ", amountOfGunRows=" + amountOfGuns +
                 ", amountOfSailors=" + amountOfSailors +
                 ", sailQuality=" + sailQuality +
                 ", speed=" + speed +
