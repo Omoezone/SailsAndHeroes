@@ -31,7 +31,7 @@ class PlayerOrderMakerTest {
             ship.setId(j);
             Player player = new Player();
             player.setPlayerID(j);
-            player.setShip(ship);
+            player.setShip(ship); //TODO, det skal ændres så det passer med en list
             players.add(player);
         }
         shipID = "1";
