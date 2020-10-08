@@ -19,11 +19,11 @@ public class CheckHit {                                             //TODO WILL 
             if(chance >= 40){
                 chance = random.nextInt(20) + 1;
                 if(chance >= 2){
-                    Damage.crit(chance);
+                    //Damage.crit(chance);
                 }
                 //TODO Was crit here or in damage?
                 //Call damage class
-                Damage.calculate();
+               // Damage.calculate();
             }
         }
         //Check north
@@ -31,7 +31,7 @@ public class CheckHit {                                             //TODO WILL 
             int chance = random.nextInt(100) + 1;
             //10 percent for hit
             if(chance >= 10){
-                Damage.calculate();
+              //  Damage.calculate();
             }
         }
         //Check north-west
@@ -39,7 +39,7 @@ public class CheckHit {                                             //TODO WILL 
             int chance = random.nextInt(100) + 1;
             //10 percent for hit
             if(chance >= 10){
-                Damage.calculate();
+             //   Damage.calculate();
             }
         }
         //Check south-west
@@ -47,7 +47,7 @@ public class CheckHit {                                             //TODO WILL 
             int chance = random.nextInt(100) + 1;
             //10 percent for hit
             if(chance >= 10){
-                Damage.calculate();
+               // Damage.calculate();
             }
         }
         //Check south
@@ -55,7 +55,7 @@ public class CheckHit {                                             //TODO WILL 
             int chance = random.nextInt(100) + 1;
             //10 percent for hit
             if(chance >= 10){
-                Damage.calculate();
+              //  Damage.calculate();
             }
         }
         //Check south-east
@@ -63,7 +63,7 @@ public class CheckHit {                                             //TODO WILL 
             int chance = random.nextInt(100) + 1;
             //10 percent for hit
             if(chance >= 10){
-                Damage.calculate();
+               // Damage.calculate();
             }
         }
         //Check north-east
@@ -71,7 +71,7 @@ public class CheckHit {                                             //TODO WILL 
             int chance = random.nextInt(100) + 1;
             //10 percent for hit
             if(chance >= 10){
-                Damage.calculate();
+             //   Damage.calculate();
             }
         }
         return false;
