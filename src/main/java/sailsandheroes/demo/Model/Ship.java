@@ -32,7 +32,7 @@ public class Ship {
     private String nationality;
     @Column(name="powerValue")
     private int powerValue;
-    @Column(name="powerValue")
+    @Column(name="ammunition")
     private String ammunition;
 
     private Point startPos; //TODO skal dette ind i constructor
