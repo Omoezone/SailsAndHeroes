@@ -46,3 +46,9 @@ img {
 body {
     background:#333;
 }
+
+.moves {
+    background: aquamarine;
+    height: 100px;
+    width: 200px;
+}
