@@ -37,7 +37,7 @@
         xhttp.open("POST", "/movement", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send(posx + " + " + posy + " + " + shipid);*/
-        var movesdiv = $("#turns");
+        var movesdiv = $("#moves");
         if (movesdiv.text() === "0") {
             alert("You have no more moves left")
             return;
@@ -54,7 +54,6 @@
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(coords);
     }
-
 </script>
 
 </body>
