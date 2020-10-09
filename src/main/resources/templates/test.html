@@ -13,40 +13,49 @@
     <tr th:each="hex: ${list}">
         <div class="hex">
             <span class="test" th:onclick="|showme(${hex.position.x}, ${hex.position.y})|" th:value="${hex.getPosition().x}">
-                <img th:src="@{/img/Brig_transparent_small.png}"  src="../static/img/Brig_transparent_small.png" height="20px" width="80px" alt="ship"
-                     th:hidden="${!(hex.getPosition().x == ship.getStartPos().x && hex.getPosition().y == ship.getStartPos().y)}"/>
+                <img th:src="@{/img/Brig_transparent_small.png}"  src="../static/img/Brig_transparent_small.png" height="20px" width="80px"
+                     th:if="${hex.getPosition().x == ship1.getPosition().x && hex.getPosition().y == ship1.getPosition().y}" alt="ship">
+                <img th:src="@{/img/Brig_transparent_small.png}"  src="../static/img/Brig_transparent_small.png" height="20px" width="80px"
+                     th:if="${hex.getPosition().x == ship2.getPosition().x && hex.getPosition().y == ship2.getPosition().y}" alt="ship">
             </span>
         </div>
     </tr>
 </section>
+
 <div>
     <button onclick="send()">End turn</button>
+    <button onclick="end()">End round</button>
 </div>
 <div class="moves">
     <p>Info</p>
-    <span id="moves" th:text="${'Turns left ' + ship.getSpeed()}"></span>
-    <span th:text="${'Direction: ' + ship.getDirection()}"></span>
+    <span id="p1moves" th:text="${ship1.getSpeed()}"></span>
+    <span th:text="${'Direction: ' + ship1.getDirection()}"></span><br>
+    <span id="p2moves" th:text="${ship2.getSpeed()}"></span>
+    <span th:text="${'Direction: ' + ship2.getDirection()}"></span>
 </div>
 
 <script th:inline="javascript">
     var coords = [];
     /*<![CDATA[*/
-    coords.push(/*[[${ship.getId()}]]*/);
+    var turnplayer = /*[[${turnplayer}]]*/;
+    if (turnplayer === "ship1") {
+        coords.push(/*[[${ship1.getId()}]]*/);
+    } else {
+        coords.push(/*[[${ship2.getId()}]]*/);
+    }
     /*]]>*/
+
     function showme(posx, posy) {
-        /*var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "/movement", true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send(posx + " + " + posy + " + " + shipid);*/
-        var movesdiv = $("#moves");
-        if (movesdiv.text() === "0") {
+
+        var p1moves = $("#p1moves");
+        if (p1moves.text() === "0") {
             alert("You have no more moves left")
             return;
         }
         coords.push(posx);
         coords.push(posy);
-        var moves = movesdiv.text();
-        movesdiv.text(moves - 1);
+        var moves = p1moves.text();
+        p1moves.text(moves - 1);
         alert(posx + ", " + posy);
     }
     function send() {
@@ -54,6 +63,10 @@
         xhttp.open("POST", "/movement", true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(coords);
+    }
+
+    function end() {
+        location.reload();
     }
 </script>
 
