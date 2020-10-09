@@ -2,63 +2,98 @@ package sailsandheroes.demo.Controller;
 import org.springframework.stereotype.Controller;
 import sailsandheroes.demo.Enums.*;
 import sailsandheroes.demo.Enums.PlayerNumber;
+import sailsandheroes.demo.Model.AttackModule.AttackMain;
 import sailsandheroes.demo.Model.PlayerOrder;
 import sailsandheroes.demo.Model.Player;
+import sailsandheroes.demo.Movement.*;
+import sailsandheroes.demo.Utility.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class GameController {
+    private PlayerOrder currentPlayerOrder;
+    private Action action;
+    private PlayerNumber playerNumber;
+    private Player player;
+    private List<Player> playerListForAttackLayer;
+    private PlayerOrderResult playerOrderResult;
+    private Move movementLayer = new Move();
 
     // tag imod playerOrder objekt. Instantier enums og switch på PlayerNumber og Action enums.
     // Kald metoder fra Movement og Attack "lag".
     // Modtag GameResult enum fra Attack
     // Kommuniker op igen til Game eller CommmunicationController
-    public void recievePlayerOrder(PlayerOrder playerOrder){
-        Action action = playerOrder.getAction();
-        PlayerNumber playerNumber = null;
-        Player player = playerOrder.getPlayer();
-        List<Player> playerListForAttackLayer = new ArrayList<>();
 
-        if (playerOrder.getPlayer().getPlayerID() == 1){
-            playerNumber = PlayerNumber.PLAYER1;
-        }
-        else if (playerOrder.getPlayer().getPlayerID() == 2){
-            playerNumber = PlayerNumber.PLAYER2;
-        }
-        else {
-            System.out.println("playerID ikke gyldigt");
-        }
+    public PlayerOrderResult recievePlayerOrder(PlayerOrder playerOrder){
+        currentPlayerOrder = playerOrder;
+        action = playerOrder.getAction();
+        playerNumber = designatePlayerNumber();
+        player = playerOrder.getPlayer();
 
-        GameResult gameResult = GameResult.NONE;
+        return playerOrderResult = routeAndAskForGameResult();
+    }
+
+    public PlayerOrderResult routeAndAskForGameResult(){
+        PlayerOrderResult playerOrderResult = new PlayerOrderResult();
 
         switch (playerNumber) {
             case PLAYER1:
                 switch (action){
                     case MOVE:
-                        //noget med send ned til move
-                        System.out.println("move");
-                        break;
+                        System.out.println("GameController: player 1 move");
+
+                        if(movementLayer.moveShip(player) == TurnResult.FAILED){
+                            playerOrderResult.setTurnResult(TurnResult.FAILED);
+                        }
+
+                        return playerOrderResult;
+
                     case ATTACK:
+                        playerListForAttackLayer = new ArrayList<>();
                         playerListForAttackLayer.add(player);
-                        System.out.println("til angreb din landkrabbe");
-                        break;
+
+                        System.out.println("GameController: player 1 til angreb din landkrabbe");
+
+                        return playerOrderResult;
                 }
                 break;
+
             case PLAYER2:
                 switch (action){
                     case MOVE:
-                        //noget med send ned til move
-                        System.out.println("move");
-                        break;
+                        System.out.println("GameController: player 2 move");
+
+                        if(movementLayer.moveShip(player) == TurnResult.FAILED){
+                            playerOrderResult.setTurnResult(TurnResult.FAILED);
+                        }
+
+                        return playerOrderResult;
+
                     case ATTACK:
                         playerListForAttackLayer.add(player);
-                        System.out.println("noget andet");
-                        // todo -- kald attack metode og pass playerListForAttackLayer
-                        break;
+                        playerOrderResult.setGameResult(AttackMain.informationToAttack(playerListForAttackLayer));
+                        System.out.println("GameController: player 2 til angreb din landkrabbe");
+
+                        return playerOrderResult;
                 }
                 break;
         }
+
+        return null;
+    }
+
+    public PlayerNumber designatePlayerNumber() {
+        if (currentPlayerOrder.getPlayer().getPlayerID() == 1){
+            return PlayerNumber.PLAYER1;
+        }
+        else if (currentPlayerOrder.getPlayer().getPlayerID() == 2){
+            return PlayerNumber.PLAYER2;
+        }
+        else {
+            System.out.println("playerID ikke gyldigt");
+        }
+        return null;
     }
 }

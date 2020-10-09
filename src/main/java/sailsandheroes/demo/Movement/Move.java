@@ -1,7 +1,9 @@
 package sailsandheroes.demo.Movement;
 
+import sailsandheroes.demo.Enums.TurnResult;
 import sailsandheroes.demo.Model.Board;
 import sailsandheroes.demo.Model.Hex;
+import sailsandheroes.demo.Model.Player;
 import sailsandheroes.demo.Model.Ship;
 
 import java.awt.*;
@@ -24,6 +26,7 @@ public class Move {
     }
 
     public Move() {
+
     }
 
     public String validMove(Ship myShip, Point p) {
@@ -57,7 +60,9 @@ public class Move {
         return "false";
     }
 
-    public boolean moveShip(Ship myShip) {
+    public TurnResult moveShip(Player player) {
+        Ship myShip = player.getShipList().get(0);
+
         findStartingHex(myShip);
 
         for (Point p : myShip.getPath()) {
@@ -66,7 +71,7 @@ public class Move {
                 myShip.setDirection(direction);
             }
             if (direction.equals("false")) {
-                return false;
+                return TurnResult.FAILED;
             }
 
             switch (direction) {
@@ -117,7 +122,7 @@ public class Move {
             }
         }
         myShip.setPosition(startHex.getPosition());
-        return true;
+        return TurnResult.SUCCESSFUL;
     }
 
     public void findStartingHex(Ship myShip) {

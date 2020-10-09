@@ -10,7 +10,6 @@ public class Ship {
     private Point position;
     private double hullQuality;
     private Integer amountOfGuns;
-    private Integer gunsPerRow;
     private Integer amountOfSailors;
     private double sailQuality;
     private Integer speed;
@@ -23,13 +22,13 @@ public class Ship {
     public Ship() {
     }
 
-    public Ship(Integer id, String name, Point position, Double hullQuality, Integer amountOfGuns, Integer gunsPerRow, Integer amountOfSailors, Double sailQuality, Integer speed, String direction, String nationality, String ammunition) {
+    public Ship(Integer id, String name, Point position, Double hullQuality, Integer amountOfGuns,
+                Integer amountOfSailors, Double sailQuality, Integer speed, String direction, String nationality, String ammunition) {
         this.id = id;
         this.name = name;
         this.position = position;
         this.hullQuality = hullQuality;
         this.amountOfGuns = amountOfGuns;
-        this.gunsPerRow = gunsPerRow;
         this.amountOfSailors = amountOfSailors;
         this.sailQuality = sailQuality;
         this.speed = speed;
@@ -37,7 +36,8 @@ public class Ship {
         this.nationality = nationality;
         this.ammunition = ammunition;
     }
-// Lavet af William
+
+    // Lavet af William
     public void calculatePowerValue(){
         int guns = amountOfGuns / 2;
         int sailorPrGun = amountOfSailors/3;
@@ -152,14 +152,6 @@ public class Ship {
         this.path = path;
     }
 
-    public Integer getGunsPerRow() {
-        return gunsPerRow;
-    }
-
-    public void setGunsPerRow(Integer gunsPerRow) {
-        this.gunsPerRow = gunsPerRow;
-    }
-
     @Override
     public String toString() {
         return "Ship{" +
@@ -168,7 +160,6 @@ public class Ship {
                 ", position=" + position +
                 ", hullQuality=" + hullQuality +
                 ", amountOfGuns=" + amountOfGuns +
-                ", gunsPerRow=" + gunsPerRow +
                 ", amountOfSailors=" + amountOfSailors +
                 ", sailQuality=" + sailQuality +
                 ", speed=" + speed +
