@@ -14,6 +14,8 @@
     <tr th:each="hex: ${list}">
         <div class="hex">
             <span class="test" th:onclick="|showme(${hex.position.x}, ${hex.position.y})|" th:value="${hex.getPosition().x}">
+                <input hidden readonly type="number" id="coordinateX" th:value="${hex.position.x}">
+                <input hidden readonly type="number" id="coordinateY" th:value="${hex.position.y}">
                 <img th:src="@{/img/Brig_transparent_small.png}"  src="../static/img/Brig_transparent_small.png" height="20px" width="80px" alt="ship"
                      th:hidden="${!(hex.getPosition().x == ship.getStartPos().x && hex.getPosition().y == ship.getStartPos().y)}"/>
             </span>
@@ -32,6 +34,7 @@
     <span id="moves" th:text="${'Turns left ' + ship.getSpeed()}"></span>
     <span th:text="${'Direction: ' + ship.getDirection()}"></span>
 </div>
+
 
 <script th:inline="javascript">
 
