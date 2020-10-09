@@ -9,31 +9,51 @@
 </head>
 <body>
 
-<section class="hex-grid-frame">
-    <tr th:each="hex: ${list}">
-        <div class="hex">
-            <span class="test" th:onclick="|showme(${hex.position.x}, ${hex.position.y})|" th:value="${hex.getPosition().x}">
-                <img th:src="@{/img/Brig_transparent_small.png}"  src="../static/img/Brig_transparent_small.png" height="20px" width="80px"
-                     th:if="${hex.getPosition().x == ship1.getPosition().x && hex.getPosition().y == ship1.getPosition().y}" alt="ship">
-                <img th:src="@{/img/Brig_transparent_small.png}"  src="../static/img/Brig_transparent_small.png" height="20px" width="80px"
-                     th:if="${hex.getPosition().x == ship2.getPosition().x && hex.getPosition().y == ship2.getPosition().y}" alt="ship">
-            </span>
+<div class="game window">
+    <h1 id="header_content">Ship and Sails Ohio!</h1>
+    <div class="game_window_left">
+        <section class="hex-grid-frame">
+            <tr th:each="hex: ${list}">
+                <div class="hex">
+                    <span class="test" th:onclick="|showme(${hex.position.x}, ${hex.position.y})|" th:value="${hex.getPosition().x}">
+                        <img th:src="@{/img/Brig_transparent_small.png}"  src="../static/img/Brig_transparent_small.png" height="20px" width="80px"
+                            th:if="${hex.getPosition().x == ship1.getPosition().x && hex.getPosition().y == ship1.getPosition().y}" alt="ship">
+                        <img th:src="@{/img/Brig_transparent_small.png}"  src="../static/img/Brig_transparent_small.png" height="20px" width="80px"
+                            th:if="${hex.getPosition().x == ship2.getPosition().x && hex.getPosition().y == ship2.getPosition().y}" alt="ship">
+                    </span>
+                </div>
+            </tr>
+        </section>
+    </div>
+    <div class="game_window_right">
+        <div class="text_info">
+            <h2>Ship</h2>
+            <h2>Man at War</h2>
+            <h2>HP</h2>
+            <h3>##################</h3>
+
+            <h2>Sejl</h2>
+            <h3>##################</h3>
+
+            <h2>Kanoner</h2>
+            <h3>##################</h3>
         </div>
-    </tr>
-</section>
+        <div class="moves">
+            <p>Ship information</p>
+            <span id="p1moves" th:text="${ship1.getSpeed()}"></span>
+            <span th:text="${'Direction: ' + ship1.getDirection()}"></span><br>
+            <span id="p2moves" th:text="${ship2.getSpeed()}"></span>
+            <span th:text="${'Direction: ' + ship2.getDirection()}"></span>
+        </div>
+        <div>
+            <button onclick="send()">End turn</button>
+            <button onclick="end()">End round</button>
+        </div>
 
-<div>
-    <button onclick="send()">End turn</button>
-    <button onclick="end()">End round</button>
-</div>
-<div class="moves">
-    <p>Info</p>
-    <span id="p1moves" th:text="${ship1.getSpeed()}"></span>
-    <span th:text="${'Direction: ' + ship1.getDirection()}"></span><br>
-    <span id="p2moves" th:text="${ship2.getSpeed()}"></span>
-    <span th:text="${'Direction: ' + ship2.getDirection()}"></span>
-</div>
 
+
+    </div>
+</div>
 <script th:inline="javascript">
     var coords = [];
     /*<![CDATA[*/

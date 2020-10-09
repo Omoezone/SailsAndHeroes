@@ -29,13 +29,35 @@
 
 .hex-grid-frame {
     width:920px;
-    margin:auto;
-    background: lime;
     padding:1px 28px 45px 1px;
 }
 
 div span img {
     transform:rotate(-45deg) skew(0,0) scale(1.4,0.77);
+}
+
+.game_window_right {
+    /*border: dashed;*/
+    border-color: white;
+    color: white;
+    display: inline-block;
+    margin: 20px 20px 20px 20px;
+}
+
+.game_window_left {
+    /*border: dashed;*/
+    border-color: white;
+    display: inline-block;
+    margin: 20px 20px 20px 20px;
+}
+
+#header_content {
+    color: deepskyblue;
+    text-align: center;
+    padding-top: 20px;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+    0px 8px 13px rgba(0,0,0,0.1),
+    0px 18px 23px rgba(0,0,0,0.1);
 }
 
 img {
@@ -46,10 +68,28 @@ img {
 
 body {
     background:#333;
+    /*border: dashed;*/
+    border-color: white;
+}
+
+h3 {
+    border: solid ;
+    border-color: white;
+    padding: 5px 10px 5px 10px;
+}
+
+.text_info {
+    display: inline-block;
 }
 
 .moves {
+    color: #333333;
     background: aquamarine;
-    height: 125px;
-    width: 200px;
+    height: 100px;
+    width: 150px;
+    display: inline-block;
+    vertical-align:top;
+    padding: 5px 10px 5px 10px;
+    margin-top: 20px;
+
 }

@@ -11,7 +11,7 @@ public class HomeController {
     @Autowired
     ShipService shipService;
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public String index() {
         return "/index";
     }
