@@ -1,8 +1,10 @@
 package sailsandheroes.demo.Model;
 
+import java.util.List;
+
 public class Player {
 
-    private Ship ship;
+    private List<Ship> shipList;
     private int playerID;
     private String playerName;
 
@@ -10,18 +12,18 @@ public class Player {
 
     }
 
-    public Player(Ship ship, int playerID, String playerName) {
-        this.ship = ship;
+    public Player(List<Ship> shipList, int playerID, String playerName) {
+        this.shipList = shipList;
         this.playerID = playerID;
         this.playerName = playerName;
     }
 
-    public Ship getShip() {
-        return ship;
+    public List<Ship> getShipList() {
+        return shipList;
     }
 
-    public void setShip(Ship ship) {
-        this.ship = ship;
+    public void setShip(List shipList) {
+        this.shipList = shipList;
     }
 
     public int getPlayerID() {
@@ -43,7 +45,7 @@ public class Player {
     @Override
     public String toString() {
         return "Player{" +
-                "ship=" + ship +
+                "ship=" + shipList +
                 ", playerID=" + playerID +
                 ", playerName='" + playerName + '\'' +
                 '}';
