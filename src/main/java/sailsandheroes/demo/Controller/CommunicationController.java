@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import sailsandheroes.demo.Model.Board;
 import sailsandheroes.demo.Model.Ship;
+import sailsandheroes.demo.Repository.ShipRepository;
 import sailsandheroes.demo.Service.MovementService;
 import sailsandheroes.demo.Service.ShipService;
 
@@ -24,8 +26,6 @@ public class CommunicationController {
     @Autowired
     MovementService movementService;
 
-    private String turnplayer = "ship1";
-
     @GetMapping("/board")
     public String board(Model model){
 
@@ -34,6 +34,7 @@ public class CommunicationController {
 
         Ship ship1 = shipService.fetchShipById(1);
         Ship ship2 = shipService.fetchShipById(2);
+        String turnplayer = "ship1";
 
         if (ship1.getPosition() == null) {
             ship1.setPosition(new Point(1, 1));
@@ -73,10 +74,7 @@ public class CommunicationController {
 
         //movementService.Move(myShip);
 
-        if (turnplayer.equals("ship1")) {
-            turnplayer = "ship2";
-        } else turnplayer = "ship1";
-
         return "redirect:/board";
     }
+
 }
