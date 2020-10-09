@@ -9,6 +9,7 @@
     <link rel="stylesheet" th:href="@{/css/test.css}" href="../static/css/test.css" type="text/css">
 </head>
 <body>
+
 <div class="game window">
     <h1 id="header_content">Ship and Sails Ohio!</h1>
     <div class="game_window_left">
@@ -20,7 +21,7 @@
                 <input hidden readonly type="number" id="coordinateY" th:value="${hex.position.y}">
                         <img th:src="@{/img/Brig_transparent_small.png}"  src="../static/img/Brig_transparent_small.png" height="20px" width="80px"
                             th:if="${hex.getPosition().x == ship1.getPosition().x && hex.getPosition().y == ship1.getPosition().y}" alt="ship">
-                        <img th:src="@{/img/Brig_transparent_small.png}"  src="../static/img/Brig_transparent_small.png" height="20px" width="80px"
+                        <img th:src="@{/img/bigship.png}"  src="../static/img/bigship.png" height="20px" width="80px"
                             th:if="${hex.getPosition().x == ship2.getPosition().x && hex.getPosition().y == ship2.getPosition().y}" alt="ship">
                     </span>
                 </div>
@@ -61,10 +62,11 @@
     <button id="enableShot">Shoot</button>
 </div>
     </div>
-
 </div>
 
 <script th:inline="javascript">
+
+
     var coords = [];
     var coords2 = [];
     var actionBool;
@@ -75,7 +77,7 @@
     /*]]>*/
 
     $(document).ready(function () {
-        $("span").on('click', function(){
+        $(".hex span").on('click', function(){
             var tplayer = $("#turnplayer");
 
             if (tplayer.text() === "ship1") {
@@ -122,12 +124,10 @@
             }
             coords2.push(posx);
             coords2.push(posy);
-
         }
     }
 
     function send() {
-
         var tplayer = $("#turnplayer");
         if (tplayer.text() === "ship1") {
             tplayer.text("ship2");
@@ -145,7 +145,7 @@
             xhttp2.setRequestHeader("Content-type", "application/json");
             xhttp2.send(coords2);
         }
-
+        $(".hex span").css({backgroundColor: 'darkturquoise'})
     }
 
     function end() {

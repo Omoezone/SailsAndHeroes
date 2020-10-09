@@ -34,6 +34,7 @@ public class Board {
         for (Hex hex: hexGrid) {
             //hvis ulige y
             if(hex.getPosition().getY() % 2 != 0){
+                // hvis lige x
                 if (hex.getPosition().getX() % 2 == 0) {
                     for(int i = 0; i < hexGrid.size(); i++){
                         if(hexGrid.get(i).getPosition().getX() == hex.getPosition().getX() - 1 && hexGrid.get(i).getPosition().getY() == hex.getPosition().getY() -1){
@@ -57,6 +58,7 @@ public class Board {
                         }
                     }
                 }
+                // hvis ulige x
                 else if (hex.getPosition().getX() % 2 != 0) {
                     for(int i = 0; i < hexGrid.size(); i++){
                         if(hexGrid.get(i).getPosition().getX() == hex.getPosition().getX() - 1 && hexGrid.get(i).getPosition().getY() == hex.getPosition().getY()){
@@ -83,6 +85,7 @@ public class Board {
 
                 //hvis y er lige
             }else if(hex.getPosition().getY() % 2 == 0 || hex.getPosition().getY() == 0){
+                // hvis lige x
                 if (hex.getPosition().getX() % 2 == 0) {
                     for(int i = 0; i < hexGrid.size(); i++){
                         if(hexGrid.get(i).getPosition().getX() == hex.getPosition().getX() - 1 && hexGrid.get(i).getPosition().getY() == hex.getPosition().getY() - 1){
@@ -106,6 +109,7 @@ public class Board {
                         }
                     }
                 }
+                // hvis ulige x
                 else if (hex.getPosition().getX() % 2 != 0) {
                     for(int i = 0; i < hexGrid.size(); i++){
                         if(hexGrid.get(i).getPosition().getX() == hex.getPosition().getX() - 1 && hexGrid.get(i).getPosition().getY() == hex.getPosition().getY()){
@@ -129,10 +133,7 @@ public class Board {
                         }
                     }
                 }
-
             }
-            //System.out.println(hex);
         }
     }
-
 }
