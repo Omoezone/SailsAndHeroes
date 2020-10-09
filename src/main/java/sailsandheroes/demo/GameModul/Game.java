@@ -1,4 +1,6 @@
-package sailsandheroes.demo.Model;
+package sailsandheroes.demo.GameModul;
+
+import sailsandheroes.demo.Model.Player;
 
 import java.util.ArrayList;
 import java.util.List;

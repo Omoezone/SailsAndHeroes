@@ -1,9 +1,7 @@
 package sailsandheroes.demo.Movement;
 
-import sailsandheroes.demo.Enums.TurnResult;
-import sailsandheroes.demo.Model.Board;
+import sailsandheroes.demo.GameModul.Board;
 import sailsandheroes.demo.Model.Hex;
-import sailsandheroes.demo.Model.Player;
 import sailsandheroes.demo.Model.Ship;
 
 import java.awt.*;

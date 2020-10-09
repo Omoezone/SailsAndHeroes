@@ -1,4 +1,4 @@
-package sailsandheroes.demo.Model.AttackModule;
+package sailsandheroes.demo.AttackModule;
 
 import org.junit.jupiter.api.Test;
 import sailsandheroes.demo.Model.Ship;
@@ -8,7 +8,8 @@ import java.awt.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ShipValueTest {
-// Lavet af William
+//William
+
     @Test
     void testingShip() {
         // Calculate PowerValue for the ship

@@ -1,7 +1,5 @@
-package sailsandheroes.demo.Model.AttackModule;
+package sailsandheroes.demo.AttackModule;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import sailsandheroes.demo.Enums.GameResult;
 import sailsandheroes.demo.Model.Player;
@@ -9,11 +7,10 @@ import sailsandheroes.demo.Model.Ship;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-// Lavet af William
+// William
 class WinConditionsTest {
 
     @Test

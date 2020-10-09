@@ -1,18 +1,15 @@
-package sailsandheroes.demo.Model.AttackModule;
+package sailsandheroes.demo.AttackModule;
 
-import sailsandheroes.demo.Model.Damage;
+import sailsandheroes.demo.GameModul.Damage;
 import sailsandheroes.demo.Model.Ship;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Random;
+
 
 public class CheckHit {
 
-    //Ship shooter = the ship shooting
-    //Ship enemy = the ship getting hit (potentially (:3) )
-    //TODO WHAT SHOULD RETURN TYPE BE? Boolean if hit? Void?
-    //Lavet af Benjamin
+    //Benjamin
     public static boolean checkHit(Ship shooter, Ship enemy, Point point){
         Random random = new Random();
 

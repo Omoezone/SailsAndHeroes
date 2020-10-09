@@ -2,14 +2,15 @@ package sailsandheroes.demo.Controller;
 import org.springframework.stereotype.Controller;
 import sailsandheroes.demo.Enums.*;
 import sailsandheroes.demo.Enums.PlayerNumber;
-import sailsandheroes.demo.Model.AttackModule.AttackMain;
-import sailsandheroes.demo.Model.PlayerOrder;
+import sailsandheroes.demo.AttackModule.AttackMain;
+import sailsandheroes.demo.Utility.PlayerOrder;
 import sailsandheroes.demo.Model.Player;
 import sailsandheroes.demo.Movement.*;
 import sailsandheroes.demo.Utility.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Controller
 public class GameController {

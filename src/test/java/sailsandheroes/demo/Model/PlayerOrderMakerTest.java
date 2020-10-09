@@ -3,6 +3,8 @@ package sailsandheroes.demo.Model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import sailsandheroes.demo.Enums.Action;
+import sailsandheroes.demo.Utility.PlayerOrder;
+import sailsandheroes.demo.Utility.PlayerOrderMaker;
 
 import java.awt.*;
 import java.util.ArrayList;

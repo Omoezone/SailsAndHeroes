@@ -7,7 +7,7 @@ import org.springframework.test.context.event.annotation.BeforeTestClass;
 import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+// William
 class ShipTest {
     public final Ship ship = new Ship(1, "William", new Point(1,1), 160.0, 66, 240, 120.0, 4, "front", "dansk","Cannon Balls");
 

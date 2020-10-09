@@ -4,12 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import sailsandheroes.demo.Model.Board;
+import sailsandheroes.demo.GameModul.Board;
 import sailsandheroes.demo.Model.Ship;
-import sailsandheroes.demo.Repository.ShipRepository;
 import sailsandheroes.demo.Service.MovementService;
 import sailsandheroes.demo.Service.ShipService;
 
@@ -17,6 +15,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+//Joakim
 @Controller
 public class CommunicationController {
 

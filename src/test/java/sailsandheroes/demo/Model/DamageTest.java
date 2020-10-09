@@ -1,12 +1,14 @@
 package sailsandheroes.demo.Model;
 
 import org.junit.jupiter.api.Test;
+import sailsandheroes.demo.GameModul.Damage;
+
 import java.awt.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DamageTest {
 
-    @Test //Lavet af Benjamin
+    @Test //Benjamin
     void calculate() {
         Ship attacker = new Ship();
         Ship victim = new Ship();
@@ -49,7 +51,7 @@ class DamageTest {
         assertEquals(89, victim.getAmountOfSailors());
     }
 
-    @Test // Lavet af William
+    @Test // William
     void criticalShot() {
         Point point = new Point(1,1);
         Ship attacker = new Ship(1, "William", point, 160.0, 66, 240,120.0,4, "front", "dansk","Grape Shot");

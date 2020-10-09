@@ -1,5 +1,7 @@
 package sailsandheroes.demo.Model;
 
+import sailsandheroes.demo.Model.Ship;
+
 import java.util.List;
 
 public class Player {

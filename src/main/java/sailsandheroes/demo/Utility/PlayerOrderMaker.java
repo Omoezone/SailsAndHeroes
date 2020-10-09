@@ -1,6 +1,7 @@
-package sailsandheroes.demo.Model;
+package sailsandheroes.demo.Utility;
 
 import sailsandheroes.demo.Enums.Action;
+import sailsandheroes.demo.Model.Player;
 
 import java.awt.*;
 import java.util.List;

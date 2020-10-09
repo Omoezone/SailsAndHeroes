@@ -1,9 +1,11 @@
-package sailsandheroes.demo.Model;
+package sailsandheroes.demo.GameModul;
+
+import sailsandheroes.demo.Model.Ship;
 
 import java.util.Random;
 
 public class Damage {
-    // Lavet af Benjamin
+    // Benjamin
     public static int calculate(Ship shooter, Ship enemy, double hitChance){
         //damage formular (p. 16)
         // hitChance * Firing Power
@@ -22,7 +24,7 @@ public class Damage {
         }
         return -1;
     }
-    // Lavet af William
+    // William
     public static void criticalShot(Ship shooter, Ship enemy, Random random){
         int crit = random.nextInt(20)+1;
             switch(shooter.getAmmunition()){
