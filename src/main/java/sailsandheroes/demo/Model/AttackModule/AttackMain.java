@@ -3,8 +3,8 @@ package sailsandheroes.demo.Model.AttackModule;
 import sailsandheroes.demo.Enums.GameResult;
 import sailsandheroes.demo.Model.Player;
 import sailsandheroes.demo.Model.Ship;
-
 import java.util.ArrayList;
+
 import java.util.List;
 
 public class AttackMain {
@@ -21,9 +21,7 @@ public class AttackMain {
         //Player two shoots
         CheckHit.checkHit(playerTwoShip, playerOneShip, null/*TODO POINT (HVOR VI SKYDER*/);
 
-        checkWinConditions(list);
         //none - no result
-        //PLAYER1
-        return GameResult ; // TODO return statement here
+        return WinConditions.checkWinCondition(list);
     }
 }

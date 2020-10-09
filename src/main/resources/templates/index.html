@@ -1,52 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Home test</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-<h1 id="hey">HEY Sailor
-    <text hidden id="hello">Hello, World!</text>
+<h1>
+    Hello sailor!
 </h1>
-
-<svg viewBox="0 -550 2100 1100" style="max-width: 31.25rem;">
-    <g transform="translate(550,0)" fill="white" stroke="black" class="root">
-        <g class="grid">
-            <g th:style="|transform: translate(${hex.center.getX()}, ${hex.center.getY()})|">
-                <g class="polygon">
-                    <polygon points="100,0 50,-87 -50,-87 -100,-0 -50,87 50,87"></polygon>
-                    <tspan x="-52" y="-16" class="q-coord">-1</tspan>
-                </g>
-            </g>
-            <!--<g transform="translate(150,-433)">
-                <g class="polygon">
-                    <polygon points="100,0 50,-87 -50,-87 -100,-0 -50,87 50,87"></polygon>
-                    <tspan x="-52" y="-16" class="q-coord">-1</tspan>
-                    <text id="coord">+1, -1</text>
-                </g>
-            </g>
-            <g transform="translate(0,-346)">
-                <g class="polygon">
-                    <polygon points="100,0 50,-87 -50,-87 -100,-0 -50,87 50,87"></polygon>
-                    <tspan x="-52" y="-16" class="q-coord">-1</tspan>
-                    <text id="coord">+1, -1</text>
-                </g>
-            </g> -->
-
-        </g>
-    </g>
-</svg>
-
-
-<script>
-    $(document).ready(function () {
-        $(".polygon").click(test);
-    });
-
-    function test(){
-        $("#testo").text($(this).find("#coord").text());
-    }
-</script>
 </body>
 </html>
