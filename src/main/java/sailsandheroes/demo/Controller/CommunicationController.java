@@ -2,8 +2,11 @@ package sailsandheroes.demo.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import sailsandheroes.demo.Model.Board;
 import sailsandheroes.demo.Model.Ship;
 import sailsandheroes.demo.Service.MovementService;
 import sailsandheroes.demo.Service.ShipService;
@@ -21,10 +24,38 @@ public class CommunicationController {
     @Autowired
     MovementService movementService;
 
+    private String turnplayer = "ship1";
+
+    @GetMapping("/board")
+    public String board(Model model){
+
+        Board hexboard = new Board();
+        hexboard.fillBoard(6,12);
+
+        Ship ship1 = shipService.fetchShipById(1);
+        Ship ship2 = shipService.fetchShipById(2);
+
+        if (ship1.getPosition() == null) {
+            ship1.setPosition(new Point(1, 1));
+            ship1.setDirection("SE");
+        }
+        if (ship2.getPosition() == null) {
+            ship2.setPosition(new Point(9, 3));
+            ship2.setDirection("NW");
+        }
+
+        model.addAttribute("ship1", ship1);
+        model.addAttribute("ship2", ship2);
+        model.addAttribute("turnplayer", turnplayer);
+        model.addAttribute("list", hexboard.getHexGrid());
+
+        return "/test";
+    }
+
     @PostMapping("/movement")
     public String movement(@RequestBody String data) {
         String[] test = data.split(",");
-        /*List<Point> myPoints = new ArrayList<>();
+        List<Point> myPoints = new ArrayList<>();
         int shipId = Integer.parseInt(test[0]);
 
         for (int i = 1, j = 2; i < test.length; i+=2) {
@@ -32,29 +63,20 @@ public class CommunicationController {
             int y = Integer.parseInt(test[j]);
             myPoints.add(new Point(x, y));
             j += 2;
-        }*/
+        }
 
-        List<Point> myPoints = new ArrayList<>();
-        myPoints.add(new Point(2,2));
-        myPoints.add(new Point(2,3));
-        myPoints.add(new Point(3,3));
-        myPoints.add(new Point(4,3));
-        myPoints.add(new Point(4,2));
-        myPoints.add(new Point(3,1));
-        myPoints.add(new Point(2,2));
-
-        Ship myShip = new Ship();
-        myShip.setId(1);
-        myShip.setPosition(new Point(1, 1));
-        myShip.setSpeed(5);
-        myShip.setDirection("SE");
+        Ship myShip = shipService.fetchShipById(shipId);
         myShip.setPath(myPoints);
+
+        System.out.println(myShip);
+        System.out.println(myPoints);
 
         movementService.Move(myShip);
 
-        /*Ship myShip = shipService.getShipById(shipId);
-        myShip.setPath(myPoints);*/
+        if (turnplayer.equals("ship1")) {
+            turnplayer = "ship2";
+        } else turnplayer = "ship1";
 
-        return "redirect:/test";
+        return "redirect:/board";
     }
 }
