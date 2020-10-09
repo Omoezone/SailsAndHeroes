@@ -76,10 +76,13 @@ body {
 h3 {
     border: solid ;
     border-color: white;
-    padding: 5px 10px 5px 10px;
+    width: 50px;
+    padding: 2px 2px 2px 2px;
 }
 
 .text_info {
+    height: 500px;
+    width: 180px;
     display: inline-block;
 }
 
