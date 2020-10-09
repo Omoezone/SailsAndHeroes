@@ -28,7 +28,7 @@ public class GameController {
             playerNumber = PlayerNumber.PLAYER2;
         }
         else {
-            System.out.println("palyerID ikke gyldigt");
+            System.out.println("playerID ikke gyldigt");
         }
 
         GameResult gameResult = GameResult.NONE;
