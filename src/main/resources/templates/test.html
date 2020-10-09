@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="shootScript.js"></script>
     <link rel="stylesheet" th:href="@{/css/test.css}" href="../static/css/test.css" type="text/css">
     <!--<meta http-equiv="refresh" content="30">-->
 </head>
@@ -20,7 +21,11 @@
     </tr>
 </section>
 <div>
+    <!--TODO Send ship shoot coordinate when ending turn -->
     <button onclick="send()">End turn</button>
+</div>
+<div>
+    <button id="enableShot">Shoot</button>
 </div>
 <div class="moves">
     <p>Info</p>
@@ -36,7 +41,7 @@
     coords.push(/*[[${ship.getId()}]]*/);
     /*]]>*/
     function showme(posx, posy) {
-        document.getElementById("colorChangeHex").style.backgroundColor="red";
+       // document.getElementById("colorChangeHex").style.backgroundColor="red";
         /*var xhttp = new XMLHttpRequest();
         xhttp.open("POST", "/movement", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

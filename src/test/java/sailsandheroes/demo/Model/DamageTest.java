@@ -1,12 +1,11 @@
 package sailsandheroes.demo.Model;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class DamageTest {
 
-    @Test
+    @Test //Lavet af Benjamin
     void calculate() {
         Ship attacker = new Ship();
         Ship victim = new Ship();
