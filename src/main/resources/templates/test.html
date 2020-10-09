@@ -18,7 +18,7 @@
                     <span class="test" th:onclick="|sendCoord(${hex.position.x}, ${hex.position.y})|" th:value="${hex.getPosition().x}">
                         <img th:src="@{/img/Brig_transparent_small.png}"  src="../static/img/Brig_transparent_small.png" height="20px" width="80px"
                             th:if="${hex.getPosition().x == ship1.getPosition().x && hex.getPosition().y == ship1.getPosition().y}" alt="ship">
-                        <img th:src="@{/img/Brig_transparent_small.png}"  src="../static/img/Brig_transparent_small.png" height="20px" width="80px"
+                        <img th:src="@{/img/bigship.png}"  src="../static/img/bigship.png" height="20px" width="80px"
                             th:if="${hex.getPosition().x == ship2.getPosition().x && hex.getPosition().y == ship2.getPosition().y}" alt="ship">
                     </span>
                 </div>
@@ -59,8 +59,6 @@
 </div>
 
 <script th:inline="javascript">
-
-
     var coords = [];
     var coords2 = [];
 
@@ -70,7 +68,7 @@
     /*]]>*/
 
     $(document).ready(function () {
-        $("span").on('click', function(){
+        $(".hex span").on('click', function(){
             var tplayer = $("#turnplayer");
 
             if (tplayer.text() === "ship1") {
@@ -136,6 +134,7 @@
             xhttp2.setRequestHeader("Content-type", "application/json");
             xhttp2.send(coords2);
         }
+        $(".hex span").css({backgroundColor: 'darkturquoise'})
     }
 
     function end() {
