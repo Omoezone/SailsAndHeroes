@@ -11,16 +11,14 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerOrderMakerTest {
-    boolean isMove;
-    boolean isAttack;
+    boolean isAction;
     List<Point> coords;
     String shipID;
     List<Player> players;
 
     @BeforeEach
     public void setupForTests(){
-        isMove = false;
-        isAttack= true;
+        isAction = true;
         coords = new ArrayList<>();
         players = new ArrayList<>();
         for(int i = 0; i < 5; i++){
@@ -39,13 +37,13 @@ class PlayerOrderMakerTest {
 
     @Test
     public void createPOtest1() throws NullPointerException{
-        PlayerOrder playerOrder = PlayerOrderMaker.createPlayerOrder(isMove,isAttack,coords,shipID,players);
+        PlayerOrder playerOrder = PlayerOrderMaker.createPlayerOrder(isAction,coords,shipID,players);
         assertEquals(Action.MOVE,playerOrder.getAction());
     }
 
     @Test
     public void createPOtest2() throws NullPointerException{
-        PlayerOrder playerOrder = PlayerOrderMaker.createPlayerOrder(isMove,isAttack,coords,shipID,players);
+        PlayerOrder playerOrder = PlayerOrderMaker.createPlayerOrder(isAction,coords,shipID,players);
         assertEquals(Action.ATTACK,playerOrder.getAction());
     }
 

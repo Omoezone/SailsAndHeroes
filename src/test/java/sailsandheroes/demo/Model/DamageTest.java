@@ -1,6 +1,7 @@
 package sailsandheroes.demo.Model;
 
 import org.junit.jupiter.api.Test;
+import java.awt.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DamageTest {
@@ -50,8 +51,8 @@ class DamageTest {
 
     @Test // Lavet af William
     void criticalShot() {
-        Ship attacker = new Ship(1, "William", "Front", 160.0, 66, 240, 120.0, 4, "front", "dansk","Grape Shot");
-        Ship defender = new Ship(2, "JohnWick", "Front", 160.0, 66, 240, 120.0, 4, "front", "dansk","Cannon Ball");
+        Ship attacker = new Ship(1, "William", new Point(1, 1), 160.0, 66, 1, 240, 120.0, 4, "front", "dansk","Grape Shot");
+        Ship defender = new Ship(2, "JohnWick", new Point(9, 3), 160.0, 66, 1, 240, 120.0, 4, "front", "dansk","Cannon Ball");
         // Tests that it can kill 50% and 25% of sailors
         assertEquals(120,defender.getAmountOfSailors()/2);
         assertEquals(180,(defender.getAmountOfSailors()-defender.getAmountOfSailors()/4));
