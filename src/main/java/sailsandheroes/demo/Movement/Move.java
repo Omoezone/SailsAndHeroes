@@ -24,6 +24,7 @@ public class Move {
     }
 
     public Move() {
+
     }
 
     public String validMove(Ship myShip, Point p) {
