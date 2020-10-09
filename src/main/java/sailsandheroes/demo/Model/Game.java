@@ -1,20 +1,22 @@
 package sailsandheroes.demo.Model;
 
+import sailsandheroes.demo.Enums.PlayerNumber;
 import sailsandheroes.demo.Service.ShipService;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Game {
 
     private List<Player> players = new ArrayList<>();
     private ShipService shipService = new ShipService();
-
     private Board board;
-    private static Game game;
+    private PlayerNumber currentPlayerTurn;
 
-    private Game(int x, int y){
+    public Game(int x, int y){
         this.board = new Board();
         board.fillBoard(x,y);
 
@@ -37,6 +39,14 @@ public class Game {
 
         //ensure ships have starting position
         ensureShipStartingPosition(players);
+    }
+
+    public PlayerNumber getCurrentPlayerTurn() {
+        return currentPlayerTurn;
+    }
+
+    public void setCurrentPlayerTurn(PlayerNumber currentPlayersTurn) {
+        this.currentPlayerTurn = currentPlayersTurn;
     }
 
     public List<Player> getPlayers() {
@@ -69,11 +79,18 @@ public class Game {
         }
     }
 
-    public static Game getNewGame(int x, int y){
-        return new Game(x,y);
-    }
+    public Map<Player, Ship> getShipAndPlayerFromShipId(int shipId){
+        Map<Player, Ship> mapToReturn = new HashMap<>();
 
-    public Game getGame(){
-        return this.game;
+        for(Player player : players) {
+            for(Ship ship : player.getShipList()) {
+                if(shipId == ship.getId()) {
+                    mapToReturn.put(player, ship);
+
+                    return mapToReturn;
+                }
+            }
+        }
+        return mapToReturn;
     }
 }

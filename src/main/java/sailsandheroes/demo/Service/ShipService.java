@@ -7,9 +7,8 @@ import sailsandheroes.demo.Repository.ShipRepository;
 
 @Service
 public class ShipService {
-
-    @Autowired
-    ShipRepository shipRepository;
+    
+    ShipRepository shipRepository = new ShipRepository();
 
     public Ship fetchShipById(int id) {
         return shipRepository.fetchShipById(id);

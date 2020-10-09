@@ -1,6 +1,8 @@
 package sailsandheroes.demo.Service;
 
 import org.springframework.stereotype.Service;
+import sailsandheroes.demo.Enums.TurnResult;
+import sailsandheroes.demo.Model.Player;
 import sailsandheroes.demo.Model.Ship;
 import sailsandheroes.demo.Movement.Move;
 
@@ -13,8 +15,9 @@ public class MovementService {
         move = new Move();
     }
 
-    public boolean Move(Ship ship) {
-        return move.moveShip(ship);
+    public TurnResult Move(Player player) {
+
+        return move.moveShip(player);
     }
 
 

@@ -7,6 +7,7 @@ import sailsandheroes.demo.Enums.GameResult;
 import sailsandheroes.demo.Model.Player;
 import sailsandheroes.demo.Model.Ship;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,8 +19,8 @@ class WinConditionsTest {
     @Test
     void checkWinCondition() {
         // Creates ships
-        Ship ship1 = new Ship(1, "William", "Front", 160.0, 66, 240, 120.0, 4, "front", "dansk","balls");
-        Ship ship2 = new Ship(1, "William", "Front", 160.0, 66, 240, 120.0, 4, "front", "dansk","balls");
+        Ship ship1 = new Ship(1, "William", new Point(1, 0), 160.0, 66, 240, 120, 4.0, 3, "front", "dansk","balls");
+        Ship ship2 = new Ship(1, "William", new Point(3,3), 160.0, 66, 240, 120, 4.0, 3, "front", "dansk","balls");
         List<Player> list = new ArrayList<>();
 
         ArrayList<Ship> shipList = new ArrayList<>();
