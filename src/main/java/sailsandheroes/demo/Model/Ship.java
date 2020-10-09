@@ -2,7 +2,7 @@ package sailsandheroes.demo.Model;
 
 import java.awt.*;
 import java.util.List;
-
+// Mona og Frederik
 public class Ship {
 
     private Integer id;

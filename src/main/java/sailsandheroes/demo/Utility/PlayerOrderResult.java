@@ -2,7 +2,7 @@ package sailsandheroes.demo.Utility;
 
 import sailsandheroes.demo.Enums.GameResult;
 import sailsandheroes.demo.Enums.TurnResult;
-
+// Mads og Michael
 public class PlayerOrderResult {
     private GameResult gameResult;
     private TurnResult turnResult;

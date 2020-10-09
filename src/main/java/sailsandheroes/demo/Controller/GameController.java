@@ -10,8 +10,7 @@ import sailsandheroes.demo.Utility.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
+// Mads og Michael
 @Controller
 public class GameController {
     private PlayerOrder currentPlayerOrder;

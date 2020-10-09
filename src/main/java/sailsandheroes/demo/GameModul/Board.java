@@ -5,7 +5,7 @@ import sailsandheroes.demo.Model.Hex;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-
+// Jakob
 public class Board {
 
     private List<Hex> hexGrid;

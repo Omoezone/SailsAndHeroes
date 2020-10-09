@@ -6,7 +6,6 @@ import sailsandheroes.demo.Model.Ship;
 import java.awt.*;
 import java.util.Random;
 
-
 public class CheckHit {
 
     //Benjamin

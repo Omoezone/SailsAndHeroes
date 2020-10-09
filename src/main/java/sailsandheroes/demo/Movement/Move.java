@@ -7,7 +7,7 @@ import sailsandheroes.demo.Model.Ship;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
-
+// Joakim
 public class Move {
 
     private final Board hexboard = new Board();
@@ -24,7 +24,6 @@ public class Move {
     }
 
     public Move() {
-
     }
 
     public String validMove(Ship myShip, Point p) {

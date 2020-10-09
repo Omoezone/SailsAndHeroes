@@ -1,7 +1,7 @@
 package sailsandheroes.demo.Movement;
 
 import sailsandheroes.demo.Model.Ship;
-
+// Joakim
 public class Speed {
 
     public void shipSpeed(Ship ship) {

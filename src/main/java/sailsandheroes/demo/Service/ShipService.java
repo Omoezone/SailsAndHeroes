@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sailsandheroes.demo.Model.Ship;
 import sailsandheroes.demo.Repository.ShipRepository;
-
+// Joakim
 @Service
 public class ShipService {
 

@@ -1,9 +1,7 @@
 package sailsandheroes.demo.Model;
 
-import sailsandheroes.demo.Model.Ship;
-
 import java.util.List;
-
+// Jakob
 public class Player {
 
     private List<Ship> shipList;
@@ -11,7 +9,6 @@ public class Player {
     private String playerName;
 
     public Player(){
-
     }
 
     public Player(List<Ship> shipList, int playerID, String playerName) {

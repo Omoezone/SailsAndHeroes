@@ -1,7 +1,7 @@
 package sailsandheroes.demo.Model;
 
 import java.awt.*;
-
+// Jakob og Joakim
 public class Hex {
 
     private Point position;

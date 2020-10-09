@@ -5,7 +5,7 @@ import sailsandheroes.demo.Model.Ship;
 
 import java.util.ArrayList;
 import java.util.List;
-
+// Joakim
 @Repository
 public class ShipRepository {
 
