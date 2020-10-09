@@ -73,9 +73,9 @@ public class CommunicationController {
 
         movementService.Move(myShip);
 
-        if (turnplayer.equals("ship1")) {
+        /*if (turnplayer.equals("ship1")) {
             turnplayer = "ship2";
-        } else turnplayer = "ship1";
+        } else turnplayer = "ship1";*/
 
         return "redirect:/board";
     }

@@ -43,46 +43,96 @@
             <span id="p1moves" th:text="${ship1.getSpeed()}"></span>
             <span th:text="${'Direction: ' + ship1.getDirection()}"></span><br>
             <span id="p2moves" th:text="${ship2.getSpeed()}"></span>
-            <span th:text="${'Direction: ' + ship2.getDirection()}"></span>
+            <span th:text="${'Direction: ' + ship2.getDirection()}"></span><br>
+            <label for="turnplayer">Turn player:</label>
+            <span id="turnplayer" th:text="${turnplayer}"></span>
         </div>
         <div>
             <button onclick="send()">End turn</button>
             <button onclick="end()">End round</button>
         </div>
-
-
-
     </div>
 </div>
+
 <script th:inline="javascript">
     var coords = [];
+    var coords2 = [];
+
     /*<![CDATA[*/
-    var turnplayer = /*[[${turnplayer}]]*/;
-    if (turnplayer === "ship1") {
         coords.push(/*[[${ship1.getId()}]]*/);
-    } else {
-        coords.push(/*[[${ship2.getId()}]]*/);
-    }
+        coords2.push(/*[[${ship2.getId()}]]*/);
     /*]]>*/
 
     function showme(posx, posy) {
 
-        var p1moves = $("#p1moves");
+        var tplay = $("#turnplayer").text();
+        if (tplay === "ship1") {
+            var p1moves = $("#p1moves");
+            if (p1moves.text() === "0") {
+                alert("You have no more moves left")
+                return;
+            }
+            coords.push(posx);
+            coords.push(posy);
+            if (p1moves.text() !== "0") {
+                var moves = p1moves.text();
+                p1moves.text(moves - 1);
+            }
+
+            alert(posx + ", " + posy);
+        }
+        else if (tplay === "ship2") {
+            var p2moves = $("#p2moves");
+            if (p2moves.text() === "0") {
+                alert("You have no more moves left")
+                return;
+            }
+            coords2.push(posx);
+            coords2.push(posy);
+            if (p2moves.text() !== "0") {
+                var moves2 = p2moves.text();
+                p2moves.text(moves2 - 1);
+            }
+
+            alert(posx + ", " + posy);
+        }
+
+        /*var p1moves = $("#p1moves");
         if (p1moves.text() === "0") {
             alert("You have no more moves left")
             return;
         }
         coords.push(posx);
         coords.push(posy);
-        var moves = p1moves.text();
-        p1moves.text(moves - 1);
-        alert(posx + ", " + posy);
+        if (p1moves.text() !== "0") {
+            var moves = p1moves.text();
+            p1moves.text(moves - 1);
+        }
+
+        alert(posx + ", " + posy);*/
     }
     function send() {
-        var xhttp = new XMLHttpRequest();
+        var tplayer = $("#turnplayer");
+        if (tplayer.text() === "ship1") {
+            tplayer.text("ship2");
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "/movement", true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.send(coords);
+        } else if (tplayer.text() === "ship2"){
+            tplayer.text("ship1")
+            var xhttp2 = new XMLHttpRequest();
+            xhttp2.open("POST", "/movement", true);
+            xhttp2.setRequestHeader("Content-type", "application/json");
+            xhttp2.send(coords2);
+        }
+        alert(tplayer.text());
+
+
+        /*var xhttp = new XMLHttpRequest();
         xhttp.open("POST", "/movement", true);
         xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send(coords);
+        xhttp.send(coords);*/
     }
 
     function end() {
