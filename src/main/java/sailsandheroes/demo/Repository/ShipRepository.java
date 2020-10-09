@@ -12,9 +12,9 @@ public class ShipRepository {
     List<Ship> ships = new ArrayList<>();
 
     {
-        /*ships.add(new Ship(1, "Brig", null,25.0, 1, 8, 60, 4.0, 2, null, null, null));
-        ships.add(new Ship(2, "Ship of the Line", null, 60.0, 2, 16, 160, 10.0, 5, null, null, null));
-        ships.add(new Ship(3, "Man at War", null, 140.0, 3, 28, 340, 24.0, 4, null, null, null)) ;*/
+        ships.add(new Ship(1, "Brig", null,25.0, 8, 60, 4.0, 2, null, null, null));
+        ships.add(new Ship(2, "Ship of the Line", null, 60.0, 16, 160, 10.0, 5, null, null, null));
+        ships.add(new Ship(3, "Man at War", null, 140.0, 28, 340, 24.0, 4, null, null, null)) ;
     }
 
     public Ship fetchShipById(int id) {

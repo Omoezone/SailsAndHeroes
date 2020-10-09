@@ -60,8 +60,7 @@ public class Move {
         return "false";
     }
 
-    public TurnResult moveShip(Player player) {
-        Ship myShip = player.getShipList().get(0);
+    public boolean moveShip(Ship myShip) {
 
         findStartingHex(myShip);
 
@@ -71,7 +70,7 @@ public class Move {
                 myShip.setDirection(direction);
             }
             if (direction.equals("false")) {
-                return TurnResult.FAILED;
+                return false;
             }
 
             switch (direction) {
@@ -122,7 +121,7 @@ public class Move {
             }
         }
         myShip.setPosition(startHex.getPosition());
-        return TurnResult.SUCCESSFUL;
+        return true;
     }
 
     public void findStartingHex(Ship myShip) {

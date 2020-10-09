@@ -44,7 +44,7 @@ public class GameController {
                     case MOVE:
                         System.out.println("GameController: player 1 move");
 
-                        if(movementLayer.moveShip(player) == TurnResult.FAILED){
+                        if(movementLayer.moveShip(player.getShipList().get(0)) == false){
                             playerOrderResult.setTurnResult(TurnResult.FAILED);
                         }
 
@@ -65,7 +65,7 @@ public class GameController {
                     case MOVE:
                         System.out.println("GameController: player 2 move");
 
-                        if(movementLayer.moveShip(player) == TurnResult.FAILED){
+                        if(movementLayer.moveShip(player.getShipList().get(0)) == false){
                             playerOrderResult.setTurnResult(TurnResult.FAILED);
                         }
 

@@ -72,7 +72,7 @@ public class CommunicationController {
         System.out.println(myShip);
         System.out.println(myPoints);
 
-        //movementService.Move(myShip);
+        movementService.Move(myShip);
 
         return "redirect:/board";
     }
