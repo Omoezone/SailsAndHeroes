@@ -71,7 +71,7 @@ public class CommunicationController {
         System.out.println(myShip);
         System.out.println(myPoints);
 
-        movementService.Move(myShip);
+        //movementService.Move(myShip);
 
         if (turnplayer.equals("ship1")) {
             turnplayer = "ship2";
