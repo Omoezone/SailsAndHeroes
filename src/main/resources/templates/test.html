@@ -1,3 +1,4 @@
+<!--Lavet af Joakim-->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -5,7 +6,6 @@
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" th:href="@{/css/test.css}" href="../static/css/test.css" type="text/css">
-    <!--<meta http-equiv="refresh" content="30">-->
 </head>
 <body>
 
@@ -15,7 +15,7 @@
         <section class="hex-grid-frame">
             <tr th:each="hex: ${list}">
                 <div class="hex">
-                    <span class="test" th:onclick="|showme(${hex.position.x}, ${hex.position.y})|" th:value="${hex.getPosition().x}">
+                    <span class="test" th:onclick="|sendCoord(${hex.position.x}, ${hex.position.y})|" th:value="${hex.getPosition().x}">
                         <img th:src="@{/img/Brig_transparent_small.png}"  src="../static/img/Brig_transparent_small.png" height="20px" width="80px"
                             th:if="${hex.getPosition().x == ship1.getPosition().x && hex.getPosition().y == ship1.getPosition().y}" alt="ship">
                         <img th:src="@{/img/Brig_transparent_small.png}"  src="../static/img/Brig_transparent_small.png" height="20px" width="80px"
@@ -38,10 +38,12 @@
             <h2>Kanoner</h2>
             <h3>##################</h3>
         </div>
-        <div class="moves">
+        <div class="info">
             <p>Ship information</p>
+            <label for="p1moves">Player 1 moves:</label>
             <span id="p1moves" th:text="${ship1.getSpeed()}"></span>
             <span th:text="${'Direction: ' + ship1.getDirection()}"></span><br>
+            <label for="p2moves">Player 2 moves:</label>
             <span id="p2moves" th:text="${ship2.getSpeed()}"></span>
             <span th:text="${'Direction: ' + ship2.getDirection()}"></span><br>
             <label for="turnplayer">Turn player:</label>
@@ -63,8 +65,36 @@
         coords2.push(/*[[${ship2.getId()}]]*/);
     /*]]>*/
 
-    function showme(posx, posy) {
+    $(document).ready(function () {
+        $("span").on('click', function(){
+            var tplayer = $("#turnplayer");
 
+            if (tplayer.text() === "ship1") {
+                var p1movesleft = $("#p1moves").text();
+                var p1count = Number(p1movesleft);
+                if (p1count > 0) {
+                    $(this).css({backgroundColor: 'yellow'});
+                    if (p1movesleft !== "0") {
+                        var moves = p1movesleft;
+                        $("#p1moves").text(moves - 1);
+                    }
+                }
+            }
+            else if (tplayer.text() === "ship2") {
+                var p2movesleft = $("#p2moves").text();
+                var p2count = Number(p2movesleft)
+                if (p2count > 0) {
+                    $(this).css({backgroundColor: 'green'});
+                    if (p2movesleft !== "0") {
+                        var moves2 = p2movesleft;
+                        $("#p2moves").text(moves2 - 1);
+                    }
+                }
+            }
+        });
+    });
+
+    function sendCoord(posx, posy) {
         var tplay = $("#turnplayer").text();
         if (tplay === "ship1") {
             var p1moves = $("#p1moves");
@@ -74,12 +104,6 @@
             }
             coords.push(posx);
             coords.push(posy);
-            if (p1moves.text() !== "0") {
-                var moves = p1moves.text();
-                p1moves.text(moves - 1);
-            }
-
-            alert(posx + ", " + posy);
         }
         else if (tplay === "ship2") {
             var p2moves = $("#p2moves");
@@ -89,28 +113,9 @@
             }
             coords2.push(posx);
             coords2.push(posy);
-            if (p2moves.text() !== "0") {
-                var moves2 = p2moves.text();
-                p2moves.text(moves2 - 1);
-            }
-
-            alert(posx + ", " + posy);
         }
-
-        /*var p1moves = $("#p1moves");
-        if (p1moves.text() === "0") {
-            alert("You have no more moves left")
-            return;
-        }
-        coords.push(posx);
-        coords.push(posy);
-        if (p1moves.text() !== "0") {
-            var moves = p1moves.text();
-            p1moves.text(moves - 1);
-        }
-
-        alert(posx + ", " + posy);*/
     }
+
     function send() {
         var tplayer = $("#turnplayer");
         if (tplayer.text() === "ship1") {
@@ -119,20 +124,14 @@
             xhttp.open("POST", "/movement", true);
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send(coords);
-        } else if (tplayer.text() === "ship2"){
+        }
+        else if (tplayer.text() === "ship2"){
             tplayer.text("ship1")
             var xhttp2 = new XMLHttpRequest();
             xhttp2.open("POST", "/movement", true);
             xhttp2.setRequestHeader("Content-type", "application/json");
             xhttp2.send(coords2);
         }
-        alert(tplayer.text());
-
-
-        /*var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "/movement", true);
-        xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send(coords);*/
     }
 
     function end() {

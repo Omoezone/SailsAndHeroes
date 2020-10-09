@@ -52,7 +52,7 @@ public class Move {
             direction = turnright;
             return direction;
         } else {
-            System.out.println("Ship cannot go to field " + p.getLocation() + " from position " + startHex.getPosition());
+            System.out.println("Ship " + myShip.getId() + " cannot go to field " + p.getLocation() + " from position " + startHex.getPosition());
         }
         return "false";
     }

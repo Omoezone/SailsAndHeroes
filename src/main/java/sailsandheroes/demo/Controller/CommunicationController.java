@@ -24,8 +24,6 @@ public class CommunicationController {
     @Autowired
     MovementService movementService;
 
-    private String turnplayer = "ship1";
-
     @GetMapping("/board")
     public String board(Model model){
 
@@ -34,6 +32,7 @@ public class CommunicationController {
 
         Ship ship1 = shipService.fetchShipById(1);
         Ship ship2 = shipService.fetchShipById(2);
+        String turnplayer = "ship1";
 
         if (ship1.getPosition() == null) {
             ship1.setPosition(new Point(1, 1));
@@ -72,10 +71,6 @@ public class CommunicationController {
         System.out.println(myPoints);
 
         movementService.Move(myShip);
-
-        /*if (turnplayer.equals("ship1")) {
-            turnplayer = "ship2";
-        } else turnplayer = "ship1";*/
 
         return "redirect:/board";
     }

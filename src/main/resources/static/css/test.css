@@ -1,3 +1,4 @@
+/*Lavet af Joakim og Frederik*/
 .hex {
     margin:0 0;
     height:90px;
@@ -82,10 +83,10 @@ h3 {
     display: inline-block;
 }
 
-.moves {
+.info {
     color: #333333;
     background: aquamarine;
-    height: 100px;
+    height: 160px;
     width: 150px;
     display: inline-block;
     vertical-align:top;
