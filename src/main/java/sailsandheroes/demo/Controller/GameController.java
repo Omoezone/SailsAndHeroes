@@ -42,11 +42,9 @@ public class GameController {
             case PLAYER1:
                 switch (action){
                     case MOVE:
-                        // todo -- send Player til move laget
                         System.out.println("GameController: player 1 move");
-                        boolean movementResult = movementLayer.moveShip(player);
 
-                        if(!movementResult){
+                        if(movementLayer.moveShip(player) == TurnResult.FAILED){
                             playerOrderResult.setTurnResult(TurnResult.FAILED);
                         }
 
@@ -65,14 +63,12 @@ public class GameController {
             case PLAYER2:
                 switch (action){
                     case MOVE:
-                        // todo -- send Player til move laget
                         System.out.println("GameController: player 2 move");
 
-                        boolean movementResult = movementLayer.moveShip(player);
-
-                        if(!movementResult){
+                        if(movementLayer.moveShip(player) == TurnResult.FAILED){
                             playerOrderResult.setTurnResult(TurnResult.FAILED);
                         }
+
                         return playerOrderResult;
 
                     case ATTACK:

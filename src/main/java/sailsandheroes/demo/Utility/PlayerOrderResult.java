@@ -4,8 +4,8 @@ import sailsandheroes.demo.Enums.GameResult;
 import sailsandheroes.demo.Enums.TurnResult;
 
 public class PlayerOrderResult {
-    GameResult gameResult;
-    TurnResult turnResult;
+    private GameResult gameResult;
+    private TurnResult turnResult;
 
     public PlayerOrderResult(GameResult gameResult, TurnResult turnResult) {
         this.gameResult = gameResult;
