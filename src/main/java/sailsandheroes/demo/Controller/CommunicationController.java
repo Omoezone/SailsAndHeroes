@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import sailsandheroes.demo.Model.Board;
+import sailsandheroes.demo.Model.Game;
 import sailsandheroes.demo.Model.Ship;
 import sailsandheroes.demo.Service.MovementService;
 import sailsandheroes.demo.Service.ShipService;
@@ -24,27 +25,14 @@ public class CommunicationController {
     @Autowired
     MovementService movementService;
 
+
+
     private String turnplayer = "ship1";
 
     @GetMapping("/board")
     public String board(Model model){
 
-        Board hexboard = new Board();
-        hexboard.fillBoard(6,12);
-
-        Ship ship1 = shipService.fetchShipById(1);
-        Ship ship2 = shipService.fetchShipById(2);
-
-        if (ship1.getPosition() == null) {
-            ship1.setPosition(new Point(1, 1));
-            ship1.setDirection("SE");
-        }
-        if (ship2.getPosition() == null) {
-            ship2.setPosition(new Point(9, 3));
-            ship2.setDirection("NW");
-        }
-
-        model.addAttribute("ship1", ship1);
+        model.addAttribute("ship1", game.getPlayers().get(0).getShipList().get(0));
         model.addAttribute("ship2", ship2);
         model.addAttribute("turnplayer", turnplayer);
         model.addAttribute("list", hexboard.getHexGrid());
